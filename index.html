@@ -1,0 +1,2691 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
+        <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+        <style type="text/tailwindcss">
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+
+            @layer base {
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 400;
+                    font-style: normal;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Regular.woff2') format('woff2');
+                }
+
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 400;
+                    font-style: italic;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Italic.woff2') format('woff2');
+                }
+
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 500;
+                    font-style: normal;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Medium.woff2') format('woff2');
+                }
+
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 500;
+                    font-style: italic;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-MediumItalic.woff2') format('woff2');
+                }
+
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 600;
+                    font-style: normal;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2');
+                }
+
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 700;
+                    font-style: normal;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Bold.woff2') format('woff2');
+                }
+            }
+            @layer components {
+            }
+            @layer utilities {
+                @keyframes pulse-custom {
+                    0%, 100% {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                    50% {
+                        opacity: 0.5;
+                        transform: scale(0.95);
+                    }
+                }
+                
+                .live-speaking-indicator {
+                    animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+                }
+            }
+        </style>
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        inter: ['Inter'],
+                        pj: ['Plus Jakarta Sans'],
+                    },
+
+                    extend: {
+                        colors: {
+                            amber: {
+                                50: '#fffbeb',
+                                100: '#fef3c7',
+                                200: '#fde68a',
+                                300: '#fcd34d',
+                                400: '#fbbf24',
+                                500: '#f59e0b',
+                                600: '#d97706',
+                                700: '#b45309',
+                                800: '#92400e',
+                                900: '#78350f',
+                            },
+                            teal: {
+                                50: '#f0fdfa',
+                                100: '#ccfbf1',
+                                200: '#99f6e4',
+                                300: '#5eead4',
+                                400: '#2dd4bf',
+                                500: '#14b8a6',
+                                600: '#0d9488',
+                                700: '#0f766e',
+                                800: '#115e59',
+                                900: '#134e4a',
+                            },
+                            orange: {
+                                50: '#fff7ed',
+                                100: '#ffedd5',
+                                200: '#fed7aa',
+                                300: '#fdba74',
+                                400: '#fb923c',
+                                500: '#f97316',
+                                600: '#ea580c',
+                                700: '#c2410c',
+                                800: '#9a3412',
+                                900: '#7c2d12',
+                            },
+                        },
+                    },
+                },
+            }
+        </script>
+    </head>
+    <body>
+        <div class="bg-gray-50">
+            <header class="py-4 md:py-6">
+                <div class="container px-4 mx-auto sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-shrink-0">
+                            <a href="#" title="" class="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
+                                <img class="w-auto h-8" src="public/clarivue-logo.png" alt="Clarivue" />
+                            </a>
+                        </div>
+
+                        <div class="flex lg:hidden">
+                            <button type="button" class="text-gray-900">
+                                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="hidden lg:flex lg:ml-10 xl:ml-16 lg:items-center lg:justify-center lg:space-x-8 xl:space-x-16 lg:flex-1">
+                            <a href="#" title="" class="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"> Product </a>
+
+                            <a href="#" title="" class="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"> How it works </a>
+                        </div>
+
+                        <div class="hidden lg:ml-auto lg:flex lg:items-center lg:space-x-8 xl:space-x-10">
+                            <a href="#" title="" class="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"> Watch in Action </a>
+
+                            <a href="#" title="" class="px-5 py-2 text-base font-bold leading-7 text-white transition-all duration-200 bg-[#FF676D] border border-transparent rounded-xl hover:bg-[#102C65] font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900" role="button">
+                                Start free
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="pt-12 pb-12 sm:pb-16 lg:pt-8">
+                <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-700 shadow-sm">
+                          <span class="inline-block h-2 w-2 rounded-full bg-[#FF676D]"></span>
+                          Interview Intelligence at your fingertips
+                        </div>
+
+                        <h1 class="text-4xl font-bold leading-tight text-gray-900 sm:text-5xl sm:leading-tight lg:leading-tight lg:text-6xl font-pj">Evidence-first interviews, decided in your inbox</h1>
+                        <p class="mt-2 text-lg text-gray-600 sm:mt-8 font-inter">Guide every conversation, auto‑score against role metrics, and record the decision with one click straight from email. Clear audit trail included.</p> 
+
+                        <form action="#" method="POST" class="mt-8 sm:mt-10 max-w-xl mx-auto">
+                            <div class="relative p-2 sm:border sm:border-gray-400 group sm:rounded-xl sm:focus-within:ring-1 sm:focus-within:ring-gray-900 sm:focus-within:border-gray-900">
+                                <input
+                                    type="email"
+                                    name=""
+                                    id=""
+                                    placeholder="Work email"
+                                    class="block w-full px-4 py-4 text-gray-900 placeholder-gray-900 bg-transparent border border-gray-400 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 rounded-xl sm:border-none sm:focus:ring-0 sm:focus:border-transparent"
+                                    required=""
+                                />
+                                <div class="mt-4 sm:mt-0 sm:absolute sm:inset-y-0 sm:right-0 sm:flex sm:items-center sm:pr-2">
+                                    <button type="submit" class="inline-flex px-6 py-3 text-lg font-bold text-white transition-all duration-200 bg-[#C9A0FF] rounded-lg focus:outline-none focus:bg-gray-600 font-pj hover:bg-[#FF676D]">Get Early Access</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="flex items-center justify-center mt-10 space-x-6 sm:space-x-8">
+                            <div class="flex items-center">
+                                <p class="text-3xl font-medium text-[#FF676D] sm:text-4xl font-pj">2,943</p>
+                                <p class="ml-3 text-sm text-gray-900 font-pj">Interviews<br />analyzed</p>
+                            </div>
+
+                            <div class="hidden sm:block">
+                                <svg class="text-gray-400" width="16" height="39" viewBox="0 0 16 39" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="0.72265" y1="10.584" x2="15.7226" y2="0.583975"></line>
+                                    <line x1="0.72265" y1="17.584" x2="15.7226" y2="7.58398"></line>
+                                    <line x1="0.72265" y1="24.584" x2="15.7226" y2="14.584"></line>
+                                    <line x1="0.72265" y1="31.584" x2="15.7226" y2="21.584"></line>
+                                    <line x1="0.72265" y1="38.584" x2="15.7226" y2="28.584"></line>
+                                </svg>
+                            </div>
+
+                            <div class="flex items-center">
+                                <p class="text-3xl font-medium text-[#FF676D] sm:text-4xl font-pj">1M+</p>
+                                <p class="ml-3 text-sm text-gray-900 font-pj">Decisions<br />supported</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Segmented Control -->
+                    <div class="mt-12 mb-0">
+                        <div class="max-w-5xl mx-auto relative z-10">
+                            <div class="flex items-center justify-center p-1.5 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg">
+                                <button class="demo-tab flex-1 px-8 py-4 text-base font-semibold text-white bg-[#102C65] rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" data-demo="scorecards">
+                                    <span class="flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                        </svg>
+                                        JD → Scorecards
+                                    </span>
+                                </button>
+                                <button class="demo-tab flex-1 px-8 py-4 text-base font-semibold text-gray-600 bg-transparent rounded-xl transition-all duration-300 hover:bg-gray-50/80 hover:text-gray-800" data-demo="interview">
+                                    <span class="flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                        </svg>
+                                        Get Live Prompts
+                                    </span>
+                                </button>
+                                <button class="demo-tab flex-1 px-8 py-4 text-base font-semibold text-gray-600 bg-transparent rounded-xl transition-all duration-300 hover:bg-gray-50/80 hover:text-gray-800" data-demo="debrief">
+                                    <span class="flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                        Decide in your email
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Frame -->
+                    <div class="mt-8 relative max-w-5xl mx-auto">
+                        <!-- Background Spline -->
+                        <div class="spline-container absolute top-0 left-0 w-full h-full -z-10">
+                            <iframe
+                                src="https://my.spline.design/herolightcopy-HWuYMA6IdNGk0VGuyvrItNGB"
+                                frameborder="0"
+                                width="100%"
+                                height="100%"
+                                id="aura-spline"
+                                class="w-full h-full"
+                                title="Interactive 3D Background"
+                                aria-hidden="true">
+                            </iframe>
+
+                            <!-- Readability overlay -->
+                            <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/40 to-neutral-950/80"></div>
+                            <div class="pointer-events-none absolute inset-0 [background:radial-gradient(60%_40%_at_50%_10%,rgba(255,255,255,0.06),transparent_70%)]"></div>
+                        </div>
+                        <div class="relative bg-transparent rounded-2xl overflow-hidden">
+                            <!-- Content Area -->
+                            <div class="p-8 bg-transparent" id="hero-frame-content">
+                                <!-- JD → Scorecards Demo -->
+                                <div class="demo-content" data-demo="scorecards" style="display: block;">
+                                    <div class="w-full bg-white/95 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-xl p-6 text-zinc-900">
+                                        <div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
+                                            <!-- LEFT: Input -->
+                                            <div class="flex flex-col">
+                                                <header class="mb-3 flex items-center gap-2">
+                                                    <svg class="h-5 w-5 text-[#102C65]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                    </svg>
+                                                    <h1 class="text-lg font-semibold tracking-tight">JD → Scorecards</h1>
+                                                </header>
+                                                <p class="mb-3 text-sm text-zinc-600">
+                                                    Paste a role description and generate raw interview scorecards — up to 6 metrics.
+                                                </p>
+
+                                                <div class="relative">
+                                                    <textarea
+                                                        id="jd-textarea"
+                                                        placeholder="Paste a JD here…"
+                                                        class="min-h-[176px] w-full resize-none rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 pb-12 text-sm outline-none transition focus:border-[#C9A0FF] focus:bg-white overflow-hidden"
+                                                        rows="1"
+                                                    ></textarea>
+                                                    <div class="pointer-events-none absolute inset-x-3 bottom-3 flex items-center justify-between text-[11px] text-zinc-500">
+                                                        <span>Tip: mention React, TS, perf, a11y to see richer metrics.</span>
+                                                        <span class="pointer-events-auto inline-flex items-center gap-1 rounded-full bg-white/80 px-2 py-0.5 ring-1 ring-zinc-200">
+                                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                                            </svg>
+                                                            paste
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mt-3 flex items-center gap-2">
+                                                    <button
+                                                        id="generate-scorecards-btn"
+                                                        class="inline-flex items-center gap-2 rounded-full bg-[#102C65] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:brightness-95 active:scale-[0.99] disabled:opacity-60"
+                                                    >
+                                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                                        </svg>
+                                                        <span id="generate-btn-text">Generate scorecards</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- RIGHT: Scorecards panel -->
+                                            <div class="relative">
+                                                <div class="rounded-2xl border border-zinc-200 bg-white p-3.5 shadow-sm min-h-[300px] flex flex-col">
+                                                    <div class="flex-1 overflow-auto">
+                                                        <div id="jd-loading-state" class="flex h-full min-h-[240px] flex-col items-center justify-center gap-2 text-sm text-zinc-600" style="display: none;">
+                                                            <svg class="h-5 w-5 animate-spin text-[#102C65]" fill="none" viewBox="0 0 24 24">
+                                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                            </svg>
+                                                            <div id="loading-step-text">Analyzing JD…</div>
+                                                        </div>
+
+                                                        <div id="jd-done-state" class="flex h-full min-h-[240px] w-full flex-col items-center justify-center text-3xl font-bold text-emerald-700" style="display: none;">
+                                                            ✅🎉 Done – scorecards ready
+                                                        </div>
+
+                                                        <div id="jd-scorecards-header" class="mb-1.5 flex items-center justify-between" style="display: none;">
+                                                            <h2 class="text-sm font-semibold uppercase tracking-wide text-zinc-700">Scorecards</h2>
+                                                            <button
+                                                                id="edit-metrics-btn"
+                                                                class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[12px] font-medium text-zinc-700 shadow-sm hover:bg-zinc-50"
+                                                            >
+                                                                <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                                                                </svg>
+                                                                <span id="edit-btn-text">Edit metrics</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <!-- Placeholder Cards -->
+                                                        <div id="jd-placeholder-cards" class="grid grid-cols-1 gap-1.5 text-[13px] text-zinc-500 sm:grid-cols-2">
+                                                            <div class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-2.5">
+                                                                <div class="mb-2 h-3 w-32 rounded bg-zinc-200/70"></div>
+                                                                <div class="h-5 w-full rounded-md bg-zinc-200/60"></div>
+                                                                <div class="mt-2 text-[11px] text-zinc-500">Metric 1</div>
+                                                            </div>
+                                                            <div class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-2.5">
+                                                                <div class="mb-2 h-3 w-32 rounded bg-zinc-200/70"></div>
+                                                                <div class="h-5 w-full rounded-md bg-zinc-200/60"></div>
+                                                                <div class="mt-2 text-[11px] text-zinc-500">Metric 2</div>
+                                                            </div>
+                                                            <div class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-2.5">
+                                                                <div class="mb-2 h-3 w-32 rounded bg-zinc-200/70"></div>
+                                                                <div class="h-5 w-full rounded-md bg-zinc-200/60"></div>
+                                                                <div class="mt-2 text-[11px] text-zinc-500">Metric 3</div>
+                                                            </div>
+                                                            <div class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-2.5">
+                                                                <div class="mb-2 h-3 w-32 rounded bg-zinc-200/70"></div>
+                                                                <div class="h-5 w-full rounded-md bg-zinc-200/60"></div>
+                                                                <div class="mt-2 text-[11px] text-zinc-500">Metric 4</div>
+                                                            </div>
+                                                            <div class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-2.5">
+                                                                <div class="mb-2 h-3 w-32 rounded bg-zinc-200/70"></div>
+                                                                <div class="h-5 w-full rounded-md bg-zinc-200/60"></div>
+                                                                <div class="mt-2 text-[11px] text-zinc-500">Metric 5</div>
+                                                            </div>
+                                                            <div class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-2.5">
+                                                                <div class="mb-2 h-3 w-32 rounded bg-zinc-200/70"></div>
+                                                                <div class="h-5 w-full rounded-md bg-zinc-200/60"></div>
+                                                                <div class="mt-2 text-[11px] text-zinc-500">Metric 6</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Generated Metric Cards -->
+                                                        <div id="jd-metric-cards" class="grid grid-cols-1 gap-1.5 sm:grid-cols-2" style="display: none;">
+                                                            <!-- Metrics will be dynamically inserted here -->
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Footer with save button -->
+                                                    <div id="jd-footer" class="sticky bottom-0 -mx-4 mt-2.5 flex flex-wrap items-center justify-between gap-2 border-t border-zinc-200 bg-white/95 px-4 pt-2.5 backdrop-blur supports-[backdrop-filter]:bg-white/80" style="display: none;">
+                                                        <div class="text-[12px] text-zinc-600">
+                                                            Total weight: <span id="total-weight" class="font-semibold text-zinc-900">100%</span>
+                                                        </div>
+                                                        <div class="flex items-center gap-2">
+                                                            <button
+                                                                id="save-scorecards-btn"
+                                                                class="inline-flex items-center gap-2 rounded-full bg-[#FF676D] px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:brightness-95"
+                                                            >
+                                                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                                </svg>
+                                                                Save & use for my interview
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- JD Demo Pointer -->
+                                                <div id="jd-demo-pointer" class="pointer-events-none absolute z-20 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-black/80 shadow-[0_0_0_3px_rgba(255,255,255,0.6)] transition-all duration-150" style="opacity: 0; left: 0; top: 0; transform: translate(-50%, -50%) scale(1);"></div>
+
+                                                <!-- Success Toast -->
+                                                <div id="jd-success-toast" class="pointer-events-none absolute left-1/2 top-3 z-30 -translate-x-1/2 opacity-0 transition-opacity duration-300" style="pointer-events: none;">
+                                                    <div class="pointer-events-auto inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-medium text-emerald-700 shadow">
+                                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                        </svg>
+                                                        Scorecards saved for this interview
+                                                    </div>
+                                                </div>
+
+                                                <!-- Congrats Modal -->
+                                                <div id="jd-congrats-modal" class="absolute inset-0 z-40 flex items-center justify-center bg-white/80 backdrop-blur-sm opacity-0 transition-opacity duration-300" style="pointer-events: none;">
+                                                    <div class="max-w-md rounded-2xl border border-zinc-200 bg-white p-5 text-center shadow-xl transform scale-95 transition-transform duration-300">
+                                                        <div class="mb-2 text-3xl">🎉👏</div>
+                                                        <div class="text-lg font-semibold">Congrats!</div>
+                                                        <p class="mt-1 text-sm text-zinc-600">
+                                                            Clarivue will now join your interview, listen in, and score these metrics automatically on your scorecard.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Interview Demo -->
+                                <div class="demo-content" data-demo="interview" style="display: none;">
+                                    <div class="bg-[#102C65]/95 backdrop-blur-sm min-h-[500px] p-6 flex rounded-2xl">
+                                        <!-- LEFT: Video Frame (70%) -->
+                                        <div class="flex-[0.7] w-full mr-8">
+                                            <div class="w-full relative rounded-2xl overflow-hidden bg-white shadow-2xl">
+                                                <!-- Title Bar -->
+                                                <div class="bg-white py-2 px-3 border-b border-gray-100 text-sm font-medium text-gray-700">
+                                                    INTERVIEW WITH MICHAEL SMITH
+                                                </div>
+                                                
+                                                <!-- Video Container -->
+                                                <div class="aspect-video bg-gray-900 relative">
+                                                    <!-- Animated Interview GIF -->
+                                                    <img id="interview-gif" 
+                                                         src="/public/clarivue-signup-ui.gif" 
+                                                         alt="Clarivue Live Interview Demo" 
+                                                         class="absolute inset-0 w-full h-full object-cover"
+                                                         onload="this.style.display='block'" />
+                                                    
+                                                    <!-- Speaking Indicator -->
+                                                    <div class="absolute bottom-2 left-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium live-speaking-indicator z-10">
+                                                        Speaking
+                                                    </div>
+                                                    
+                                                    <!-- Time Indicator -->
+                                                    <div class="absolute bottom-2 right-2 bg-black/50 text-white px-2 py-1 rounded text-xs z-10">
+                                                        12:34
+                                                    </div>
+                                                    
+                                                    <!-- Progress Bar -->
+                                                    <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-700 z-10">
+                                                        <div class="w-3/5 h-full bg-orange-500"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Small Image Boxes Below Video Frame -->
+                                            <div class="flex gap-3 mt-4 justify-center">
+                                                <!-- Left Image Box -->
+                                                <div class="w-44 h-32 bg-gray-200 rounded-lg border-2 border-white shadow-lg overflow-hidden relative">
+                                                    <div class="w-full h-full bg-blue-100 flex items-center justify-center relative">
+                                                        <!-- Abstract shapes background - properly centered and sized -->
+                                                        <svg class="w-24 h-20" viewBox="0 0 100 80" preserveAspectRatio="xMidYMid meet">
+                                                            <!-- Dark blue shape (top) -->
+                                                            <ellipse cx="50" cy="25" rx="30" ry="15" fill="#1e3a8a" transform="rotate(-20 50 25)" opacity="0.9"/>
+                                                            <!-- Purple shape (right) -->
+                                                            <ellipse cx="65" cy="50" rx="20" ry="18" fill="#c084fc" transform="rotate(15 65 50)" opacity="0.8"/>
+                                                            <!-- Coral/pink shape (left) -->
+                                                            <circle cx="30" cy="55" r="12" fill="#fb7185" opacity="0.8"/>
+                                                        </svg>
+                                                        <!-- Pill label at bottom -->
+                                                        <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+                                                            <div class="bg-white/90 backdrop-blur-sm text-gray-700 px-3 py-1 rounded-full text-xs font-medium shadow-sm whitespace-nowrap">
+                                                                Clarivue Agent
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Right Image Box -->
+                                                <div class="w-44 h-32 bg-gray-200 rounded-lg border-2 border-white shadow-lg overflow-hidden">
+                                                    <div class="w-full h-full bg-green-100 flex items-center justify-center">
+                                                        <span class="text-gray-600 text-base font-medium">Candidate</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- RIGHT: Prompt UI (30%) -->
+                                        <div class="flex-[0.3] w-full">
+                                            <div class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">CLARIVUE AI</div>
+                                            
+                                            <!-- Tabs header -->
+                                            <div class="flex border border-gray-800 bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden mb-3">
+                                                <button class="live-demo-tab flex-1 px-3 py-2 text-xs font-medium text-gray-400 border-b-2 border-transparent transition-all hover:text-white hover:bg-white/10" data-tab="prompt">
+                                                    Prompt
+                                                </button>
+                                                <button class="live-demo-tab flex-1 px-3 py-2 text-xs font-medium text-gray-400 border-b-2 border-transparent transition-all hover:text-white hover:bg-white/10" data-tab="scorecard">
+                                                    Scorecard
+                                                </button>
+                                            </div>
+                                            
+                                            <!-- Tabs content -->
+                                            <div class="bg-white rounded-2xl p-4 relative overflow-hidden">
+                                                <div class="live-tab-content" data-tab="prompt">
+                                                    <div class="space-y-3">
+                                                        <p class="text-xs text-gray-700 leading-relaxed">AI suggests relevant follow-up questions based on the conversation context.</p>
+                                                        <div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-3">
+                                                            <p class="text-xs text-orange-500 italic">"Can you walk me through a specific challenge you faced in your last project and how you overcame it?"</p>
+                                                        </div>
+                                                        <div class="flex gap-2 flex-wrap">
+                                                            <span class="bg-blue-50 text-blue-600 px-2 py-1 rounded-md text-xs font-medium">Problem Solving</span>
+                                                            <span class="bg-green-50 text-green-600 px-2 py-1 rounded-md text-xs font-medium">Project Experience</span>
+                                                        </div>
+                                                        <button class="w-full bg-slate-800 text-white text-xs px-3 py-2 rounded-lg hover:bg-slate-700 transition-colors">
+                                                            💡 Use Suggestion
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="live-tab-content hidden" data-tab="scorecard">
+                                                    <div class="space-y-3">
+                                                        <p class="text-xs text-gray-700 leading-relaxed">Track which metrics have been addressed during the interview.</p>
+                                                        <div class="space-y-2">
+                                                            <div class="flex items-center justify-between bg-gray-50 p-2 rounded-md">
+                                                                <span class="text-xs text-gray-700 font-medium">Technical Depth</span>
+                                                                <div class="flex items-center gap-2">
+                                                                    <div class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                                        <div class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></div>
+                                                                        Addressed
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex items-center justify-between bg-gray-50 p-2 rounded-md">
+                                                                <span class="text-xs text-gray-700 font-medium">Communication</span>
+                                                                <div class="flex items-center gap-2">
+                                                                    <div class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                                        <div class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></div>
+                                                                        Addressed
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex items-center justify-between bg-gray-50 p-2 rounded-md">
+                                                                <span class="text-xs text-gray-700 font-medium">Problem Solving</span>
+                                                                <div class="flex items-center gap-2">
+                                                                    <div class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                                                                        <div class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-1.5"></div>
+                                                                        Partial
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex items-center justify-between bg-gray-50 p-2 rounded-md">
+                                                                <span class="text-xs text-gray-700 font-medium">Collaboration</span>
+                                                                <div class="flex items-center gap-2">
+                                                                    <div class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                                                        <div class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-1.5"></div>
+                                                                        Not yet
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="w-full bg-slate-800 text-white text-xs px-3 py-2 rounded-lg hover:bg-slate-700 transition-colors">
+                                                            � View Coverage Report
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Debrief Email Demo -->
+                                <div class="demo-content" data-demo="debrief" style="display: none;">
+                                    <div class="h-full bg-white/95 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-xl text-zinc-900 overflow-hidden relative">
+                                        <!-- Email Header -->
+                                        <div class="flex items-center gap-4 border-b border-zinc-200 px-4 py-2 bg-zinc-50">
+                                            <div class="flex items-center gap-3">
+                                                <svg class="h-4 w-4 text-[#C9A0FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                                </svg>
+                                                <div class="text-sm font-medium">Interview Debrief</div>
+                                            </div>
+                                            <div class="ml-auto text-xs text-zinc-500">Today, 2:24 PM</div>
+                                        </div>
+
+                                        <!-- Email Content -->
+                                        <div class="p-4">
+                                            <h2 class="text-base font-semibold tracking-tight text-zinc-900 mb-2">
+                                                Interview summary — Frontend Engineer (Jane Doe)
+                                            </h2>
+
+                                            <div class="flex items-center gap-2 mb-3">
+                                                <div class="h-5 w-5 rounded-full bg-zinc-300"></div>
+                                                <div class="text-xs">
+                                                    <div class="font-medium">Clarivue Debrief</div>
+                                                    <div class="text-zinc-500">debrief@clarivue.io</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-xs leading-5 text-zinc-800">
+                                                <p class="text-[10px] text-zinc-600 mb-2">Auto-generated by Clarivue • Hiring Manager review</p>
+
+                                                <!-- Scorecard Report -->
+                                                <div class="mb-3">
+                                                    <h3 class="text-[10px] font-semibold uppercase tracking-wide text-zinc-700 mb-1">Scorecard report</h3>
+
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <!-- Top Strengths -->
+                                                        <div>
+                                                            <div class="text-[10px] font-medium text-zinc-500 mb-1">Top strengths</div>
+                                                            <div class="space-y-1">
+                                                                <div class="rounded border border-zinc-200 bg-white px-1.5 py-1 text-[10px] shadow-sm">
+                                                                    <div class="flex items-start justify-between">
+                                                                        <div class="font-medium text-zinc-800">Technical Depth</div>
+                                                                        <span class="ml-1 inline-flex items-center rounded-full bg-zinc-100 px-1 py-0.5 text-[8px] font-medium text-zinc-700">4/5</span>
+                                                                    </div>
+                                                                    <div class="text-zinc-700">Solid JS/TS patterns</div>
+                                                                </div>
+                                                                <div class="rounded border border-zinc-200 bg-white px-1.5 py-1 text-[10px] shadow-sm">
+                                                                    <div class="flex items-start justify-between">
+                                                                        <div class="font-medium text-zinc-800">Collaboration</div>
+                                                                        <span class="ml-1 inline-flex items-center rounded-full bg-zinc-100 px-1 py-0.5 text-[8px] font-medium text-zinc-700">5/5</span>
+                                                                    </div>
+                                                                    <div class="text-zinc-700">Clear communication</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Concerns -->
+                                                        <div>
+                                                            <div class="text-[10px] font-medium text-zinc-500 mb-1">Concerns</div>
+                                                            <div>
+                                                                <div class="rounded border border-amber-300 bg-amber-50 px-1.5 py-1 text-[10px] shadow-sm">
+                                                                    <div class="flex items-start justify-between">
+                                                                        <div class="font-medium text-zinc-800">Performance</div>
+                                                                        <span class="ml-1 inline-flex items-center rounded-full bg-zinc-100 px-1 py-0.5 text-[8px] font-medium text-zinc-700">3/5</span>
+                                                                    </div>
+                                                                    <div class="text-zinc-700">Needs deeper examples</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Evidence -->
+                                                <div class="mb-3">
+                                                    <p class="text-[10px] font-medium uppercase tracking-wide text-zinc-500 mb-1">Evidence</p>
+                                                    <div class="space-y-1">
+                                                        <div class="flex items-start gap-1.5 text-[10px]">
+                                                            <span class="inline-flex h-3 min-w-[1rem] items-center justify-center rounded-full border border-zinc-200 bg-white px-1 text-[8px] font-medium text-zinc-700">12:14</span>
+                                                            <span class="flex-1 rounded bg-zinc-50 px-1.5 py-0.5 text-zinc-800">Explained cache strategies</span>
+                                                        </div>
+                                                        <div class="flex items-start gap-1.5 text-[10px]">
+                                                            <span class="inline-flex h-3 min-w-[1rem] items-center justify-center rounded-full border border-zinc-200 bg-white px-1 text-[8px] font-medium text-zinc-700">18:02</span>
+                                                            <span class="flex-1 rounded bg-zinc-50 px-1.5 py-0.5 text-zinc-800">Accessibility best practices</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Decision Bar -->
+                                            <div class="flex flex-wrap items-center justify-between gap-2 border-t border-zinc-200 bg-zinc-50/60 px-2 py-1.5 rounded">
+                                                <p class="text-[10px] text-zinc-600">Ready to decide? Logged to audit trail.</p>
+                                                <div class="flex flex-wrap gap-1" id="decision-buttons">
+                                                    <button onclick="handleDecisionClick('yes')" class="inline-flex items-center gap-0.5 rounded-full bg-[#102C65] px-2 py-0.5 text-[10px] font-medium text-white hover:brightness-95 transition-all" id="yes-btn">
+                                                        <span>Yes</span>
+                                                        <span class="text-[8px] font-normal opacity-80">(proceed)</span>
+                                                    </button>
+                                                    <button onclick="handleDecisionClick('no')" class="inline-flex items-center gap-0.5 rounded-full bg-[#FF676D] px-2 py-0.5 text-[10px] font-medium text-white hover:brightness-95 transition-all" id="no-btn">
+                                                        <span>No</span>
+                                                        <span class="text-[8px] font-normal opacity-80">(pass)</span>
+                                                    </button>
+                                                    <button onclick="handleDecisionClick('round')" class="inline-flex items-center rounded-full bg-transparent px-2 py-0.5 text-[10px] font-medium text-zinc-600 hover:bg-zinc-100 transition-all" id="round-btn">
+                                                        Another round
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                        <!-- Demo Pointer -->
+                                        <div id="demo-pointer" class="absolute z-50 pointer-events-none opacity-0 transition-all duration-150" style="transform: translate(-50%, -50%);">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-lg">
+                                                <path d="M5.5 3L19.5 12L12.5 14L10.5 21L5.5 3Z" fill="white" stroke="black" stroke-width="1.5"/>
+                                                <path d="M5.5 3L19.5 12L12.5 14L10.5 21L5.5 3Z" fill="black" fill-opacity="0.1"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <!-- Reason Modal -->
+                                    <div id="reason-modal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+                                        <div class="absolute inset-0 bg-black/30" onclick="closeModal()"></div>
+                                        <div class="relative z-10 w-full max-w-xs rounded-lg border border-zinc-200 bg-white p-3 shadow-xl transform scale-95 transition-all duration-300" id="modal-content">
+                                            <h3 class="text-xs font-semibold text-zinc-900">Add a quick reason</h3>
+                                            <p class="mt-1 text-[10px] text-zinc-500">for your decision: <span class="font-medium text-zinc-700" id="decision-type"></span></p>
+                                            <textarea
+                                                id="reason-textarea"
+                                                class="mt-2 h-16 w-full resize-none rounded border border-zinc-200 bg-white p-1.5 text-[10px] text-zinc-800 outline-none focus:ring-1 focus:ring-[#102C65]/30"
+                                                placeholder="e.g., Strong collaboration, but needs deeper examples"
+                                            ></textarea>
+                                            <div class="mt-2 flex items-center justify-end gap-1.5">
+                                                <button onclick="closeModal()" class="rounded-full border border-zinc-300 bg-white px-2 py-1 text-[10px] font-medium text-zinc-700 hover:bg-zinc-100">
+                                                    Cancel
+                                                </button>
+                                                <button onclick="submitReason()" class="rounded-full bg-[#102C65] px-2.5 py-1 text-[10px] font-semibold text-white hover:brightness-95" id="submit-btn">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Success Message -->
+                                    <div id="success-message" class="fixed top-16 left-1/2 transform -translate-x-1/2 z-60 opacity-0 pointer-events-none transition-all duration-300">
+                                        <div class="rounded-lg border border-emerald-200 bg-white px-3 py-2 shadow-lg">
+                                            <div class="flex items-center gap-1.5 text-xs">
+                                                <span class="text-sm">✅</span>
+                                                <span class="font-medium text-zinc-900">Your decision has been recorded and the pipeline updated</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Success Modal -->
+                                    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+                                        <div class="absolute inset-0 bg-black/40" onclick="closeSuccessModal()"></div>
+                                        <div class="relative z-10 w-full max-w-sm rounded-xl border border-emerald-200 bg-white p-6 shadow-2xl transform scale-95 transition-all duration-300" id="success-modal-content">
+                                            <div class="text-center">
+                                                <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 mb-4">
+                                                    <span class="text-3xl">🎉</span>
+                                                </div>
+                                                <h3 class="text-lg font-semibold text-zinc-900 mb-2">Thanks for your feedback!</h3>
+                                                <p class="text-sm text-zinc-600 mb-6">Your decision has now been recorded and the hiring pipeline has been updated.</p>
+                                                <button onclick="closeSuccessModal()" class="w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors">
+                                                    Got it
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="py-12 bg-white sm:py-16 lg:py-20">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="max-w-4xl px-4 mx-auto text-center sm:px-0">
+                    <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl font-pj">Efficient interview ops for busy teams</h2>
+                    <p class="mt-4 text-lg text-gray-600 font-pj">Streamline your interview process and make data-driven decisions with ease.</p>
+                </div>
+
+                <div class="relative max-w-md mx-auto mt-12 md:max-w-none md:mt-20">
+                    <div class="absolute inset-x-0 hidden top-36 xl:block">
+                        <img class="object-contain w-full h-auto max-w-xl mx-auto opacity-60" src="https://cdn.rareblocks.xyz/collection/clarity/images/how-it-works/2/line-pattern.png" alt="" style="filter: hue-rotate(260deg) saturate(1.5) brightness(1.2);" />
+                    </div>
+
+                    <div class="grid grid-cols-1 text-center md:text-left md:grid-cols-3 md:gap-x-16 gap-y-12 xl:gap-x-32">
+                        <div class="flex flex-col justify-between">
+                            <div class="relative flex-shrink-0 mx-8 md:mx-0">
+                                <!-- Plan Card Component -->
+                                <div class="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-3 shadow-xl">
+                                    <!-- Header (icon + tag) -->
+                                    <div class="flex items-start justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#131e34]/5 text-[#131e34]">
+                                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span class="inline-flex items-center gap-1 rounded-full bg-[#131e34]/5 px-2 py-0.5 text-[9px] font-medium text-[#131e34] ring-1 ring-[#131e34]/10">
+                                            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                                            </svg>
+                                            Generated from JD
+                                        </span>
+                                    </div>
+
+                                    <!-- Job meta -->
+                                    <div class="mt-2 grid grid-cols-2 gap-2 rounded-lg bg-slate-50 p-2 ring-1 ring-slate-200">
+                                        <div class="flex items-center gap-1 text-slate-700">
+                                            <svg class="h-3 w-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                                            </svg>
+                                            <span class="text-[10px]">job_description.pdf</span>
+                                        </div>
+                                        <div class="flex items-center justify-end gap-1 text-[10px] text-slate-600">
+                                            <span class="rounded-full bg-slate-100 px-2 py-0.5 ring-1 ring-slate-200">6 competencies</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Scorecard preview (short) -->
+                                    <div class="mt-2 rounded-lg border border-slate-200 bg-slate-50 p-2">
+                                        <div class="mb-1 flex items-center justify-between">
+                                            <div class="text-xs font-medium text-slate-900">Role scorecard</div>
+                                            <button class="inline-flex items-center gap-1 rounded-md bg-slate-200 px-2 py-1 text-[10px] text-slate-800 hover:bg-slate-300">
+                                                <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                </svg>
+                                                Edit
+                                            </button>
+                                        </div>
+                                        <ul class="space-y-2">
+                                            <li>
+                                                <div class="mb-1 flex items-center justify-between text-[10px]">
+                                                    <span class="text-slate-800">Problem solving</span>
+                                                    <span class="text-slate-600">30%</span>
+                                                </div>
+                                                <div class="h-1.5 w-full rounded-full bg-slate-200 overflow-hidden">
+                                                    <div class="h-1.5 rounded-full bg-[#131e34]" style="width: 30%"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-1 flex items-center justify-between text-[10px]">
+                                                    <span class="text-slate-800">Communication</span>
+                                                    <span class="text-slate-600">20%</span>
+                                                </div>
+                                                <div class="h-1.5 w-full rounded-full bg-slate-200 overflow-hidden">
+                                                    <div class="h-1.5 rounded-full bg-[#131e34]" style="width: 20%"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-1 flex items-center justify-between text-[10px]">
+                                                    <span class="text-slate-800">Role knowledge</span>
+                                                    <span class="text-slate-600">20%</span>
+                                                </div>
+                                                <div class="h-1.5 w-full rounded-full bg-slate-200 overflow-hidden">
+                                                    <div class="h-1.5 rounded-full bg-[#131e34]" style="width: 20%"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="relative mt-2">
+                                            <!-- blurred hint -->
+                                            <div class="rounded-lg bg-slate-200/60 p-1.5">
+                                                <div class="h-1.5 w-11/12 rounded-full bg-slate-300 blur-[1px]"></div>
+                                                <div class="mt-1.5 h-1.5 w-9/12 rounded-full bg-slate-300 blur-[1px]"></div>
+                                                <div class="mt-1.5 h-1.5 w-10/12 rounded-full bg-slate-300 blur-[1px]"></div>
+                                            </div>
+                                            <div class="pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-b from-transparent to-slate-50/90"></div>
+                                            <div class="mt-1 text-center text-[9px] text-slate-500">+ 3 more competencies</div>
+                                        </div>
+                                        <div class="mt-2 flex items-center gap-1 text-[10px] text-slate-600">
+                                            <svg class="h-3 w-3 text-[#131e34]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            Mapped to role requirements
+                                        </div>
+                                    </div>
+
+                                    <!-- Footer actions -->
+                                    <div class="mt-3 flex items-center">
+                                        <div class="text-[9px] text-slate-600">Reusable template • Owner: Talent Ops</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 md:mt-10">
+                                <h3 class="text-xl font-bold text-gray-900 font-pj">Plan</h3>
+                                <p class="mt-4 text-base font-normal leading-7 text-gray-600">Import the job. We build the interview plan and scorecard from the JD. Role maps to competencies - one source of truth.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col justify-between">
+                            <div class="relative flex-shrink-0 mx-8 md:mx-0">
+                                <!-- Interview Chat UI Card -->
+                                <div class="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-3 shadow-xl">
+                                    <!-- Header -->
+                                    <div class="flex items-start justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#131e34]/5 text-[#131e34]">
+                                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span class="inline-flex items-center gap-1 rounded-full bg-lavender-400 px-2 py-0.5 text-[9px] font-medium text-lavender-400 ring-1 ring-lavender-400/10">
+                                            <div class="h-2 w-2 rounded-full bg-lavender-400"></div>
+                                            Live interview
+                                        </span>
+                                    </div>
+
+                                    <!-- Chat UI -->
+                                    <div class="mt-2 space-y-2">
+                                        <!-- Candidate message -->
+                                        <div class="flex gap-2">
+                                            <div class="h-6 w-6 shrink-0 rounded-full bg-slate-200"></div>
+                                            <div class="max-w-[80%] rounded-2xl rounded-tl-sm bg-slate-50 p-2 ring-1 ring-slate-200">
+                                                <div class="text-[10px] text-slate-500">00:10</div>
+                                                <div class="mt-1 text-xs text-slate-800">
+                                                    I led the migration to a new payments API and reduced checkout failures by 18 percent.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Clarivue live prompt -->
+                                        <div class="flex gap-2">
+                                            <div class="h-6 w-6 shrink-0 rounded-full bg-orange-200 text-white grid place-items-center text-[9px]">CV</div>
+                                            <div class="max-w-[80%] rounded-2xl rounded-tl-sm bg-[#131e34] text-white p-2 shadow-sm">
+                                                <div class="text-[10px] text-white/70">Live prompt</div>
+                                                <div class="mt-1 text-xs">Ask for a concrete example of ownership. Follow up: metrics, stakeholders, blockers.</div>
+                                                <div class="mt-1.5 flex items-center gap-1">
+                                                    <button class="rounded-md bg-white text-[#131e34] px-2 py-1 text-[10px]">Use prompt</button>
+                                                    <button class="rounded-md bg-white/10 px-2 py-1 text-[10px] text-white ring-1 ring-white/20">Rephrase</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Footer: follow-ups -->
+                                    <div class="mt-3 flex items-center">
+                                        <div class="text-[9px] text-slate-600">Auto‑notes and timestamps are saved</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 md:mt-10">
+                                <h3 class="text-xl font-bold text-gray-900 font-pj">Interview</h3>
+                                <p class="mt-4 text-base font-normal leading-7 text-gray-600">Live prompts keep interviewers on track. Notes, time stamps, and follow-ups recorded without lifitng a finger.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col justify-between">
+                            <div class="relative flex-shrink-0 mx-8 md:mx-0">
+                                <div class="absolute -inset-1">
+                                    <div class="w-full h-full mx-auto rotate-180 opacity-20 blur-lg filter" style="background: linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)"></div>
+                                </div>
+                                
+                                <!-- Email Debrief Card -->
+                                <div class="relative w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-3 shadow-xl">
+                                    <!-- Header -->
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2 text-slate-900">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                            </svg>
+                                            <div class="text-xs font-medium">Debrief email preview</div>
+                                        </div>
+                                        <div class="text-[9px] text-slate-600">Sent · Today 3:14 PM</div>
+                                    </div>
+
+                                    <!-- Email To/Subject -->
+                                    <div class="mt-2 rounded-lg bg-slate-50 p-2 ring-1 ring-slate-200">
+                                        <div class="flex flex-wrap items-center gap-1 text-[10px] text-slate-700">
+                                            <span class="font-medium">To:</span>
+                                            <span>hiring-manager@company.com</span>
+                                            <span class="hidden sm:inline">·</span>
+                                            <span class="font-medium">Subject:</span>
+                                            <span>Debrief — Product Manager — Decision requested</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Body -->
+                                    <div class="mt-2 rounded-lg border border-slate-200">
+                                        <!-- Header line -->
+                                        <div class="flex items-center justify-between border-b border-slate-200 bg-[#131e34] px-2 py-1.5">
+                                            <div class="text-[10px] text-white">Clarivue summary</div>
+                                            <div class="text-[9px] text-white/70">Role: Product Manager</div>
+                                        </div>
+
+                                        <!-- Content -->
+                                        <div class="p-2">
+                                            <!-- Score tiles -->
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div class="rounded-lg bg-white p-2 ring-1 ring-slate-200">
+                                                    <div class="text-[10px] text-slate-500">Ownership</div>
+                                                    <div class="mt-1 flex items-end gap-1">
+                                                        <div class="text-xl font-semibold text-slate-900">4</div>
+                                                        <div class="text-[10px] text-slate-500">/5</div>
+                                                    </div>
+                                                    <div class="mt-1 text-[9px] text-slate-600">Strong examples, clear outcomes</div>
+                                                </div>
+                                                <div class="rounded-lg bg-white p-2 ring-1 ring-slate-200">
+                                                    <div class="text-[10px] text-slate-500">Communication</div>
+                                                    <div class="mt-1 flex items-end gap-1">
+                                                        <div class="text-xl font-semibold text-slate-900">5</div>
+                                                        <div class="text-[10px] text-slate-500">/5</div>
+                                                    </div>
+                                                    <div class="mt-1 text-[9px] text-slate-600">Concise, customer-first framing</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Evidence link -->
+                                            <div class="mt-2 rounded-lg bg-slate-50 p-2 ring-1 ring-slate-200">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center gap-1 text-[10px] text-slate-700">
+                                                        <svg class="h-3 w-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                        </svg>
+                                                        <span>Evidence — 00:42 highlight</span>
+                                                    </div>
+                                                    <a class="inline-flex items-center gap-1 text-[9px] font-medium text-slate-900 hover:underline" href="#">
+                                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                                                        </svg>
+                                                        View clip
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <!-- Decision CTA -->
+                                            <div class="mt-3">
+                                                <button class="flex w-full items-center justify-center gap-1 rounded-lg bg-[#131e34] px-3 py-2 text-sm font-semibold text-white shadow-black/10 hover:bg-[#0f1729]">
+                                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                    </svg>
+                                                    Record decision
+                                                </button>
+                                                <div class="mt-1 text-center text-[9px] text-slate-500">No login required — your decision is recorded and synced to the ATS</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 md:mt-10">
+                                <h3 class="text-xl font-bold text-gray-900 font-pj">Decide</h3>
+                                <p class="mt-4 text-base font-normal leading-7 text-gray-600">Scorecards and summaries arrive by email with evidence. Record decision with one click, with no extra logins or tools.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-12 bg-gray-50 sm:py-16 lg:py-20">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="max-w-xl mx-auto text-center xl:max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full mb-4">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        Interview operations
+                    </div>
+                    <h2 class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl xl:text-5xl font-pj">
+                        Run better interviews with less effort
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600 font-pj">The fastest path from conversation to confident hire decisions.</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="mt-12 mb-8">
+                    <div class="flex flex-wrap justify-center gap-2 p-4 bg-white rounded-xl shadow-sm">
+                        <button class="tab-btn px-5 py-2 rounded-full text-base font-semibold text-white bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-900 transition font-pj" data-tab="structure">
+                            <svg class="inline-block w-5 h-5 mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                            </svg>
+                            Structure
+                        </button>
+                        <button class="tab-btn px-5 py-2 rounded-full text-base font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-900 transition font-pj" data-tab="quality">
+                            <svg class="inline-block w-5 h-5 mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Quality
+                        </button>
+                        <button class="tab-btn px-5 py-2 rounded-full text-base font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-900 transition font-pj" data-tab="results">
+                            <svg class="inline-block w-5 h-5 mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                            Results
+                        </button>
+                        <button class="tab-btn px-5 py-2 rounded-full text-base font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-900 transition font-pj" data-tab="security">
+                            <svg class="inline-block w-5 h-5 mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                            Security & Privacy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Feature Panels -->
+                <div>
+                    <!-- Structure -->
+                    <div class="feature-panel" data-panel="structure">
+                        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Consistent interview flow</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Structured guides keep every interviewer aligned from kickoff to close.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Standardized scorecards</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Role-based rubrics auto-generate and auto-score for apples-to-apples reviews.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Clear audit trail</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Timestamps, notes, and decisions captured for compliance-ready records.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quality -->
+                    <div class="feature-panel hidden" data-panel="quality">
+                        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Evidence tied to competencies</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Every note maps to the skills and levels you hire for.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Question prompts reduce bias</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Guided follow-ups keep interviews objective and consistent across panels.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16l-3-9m3 9l3-9"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Reliable data for fair decisions</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Structured scoring reduces noise and surfaces true signal.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="feature-panel hidden" data-panel="results">
+                        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Faster time-to-decision</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Auto-summaries and highlights cut post-interview back-and-forth.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Confident yes or no</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Clear hire signals with evidence make decisions defensible.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Less admin</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Scorecards, notes, and reports generate automatically.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security & Privacy -->
+                    <div class="feature-panel hidden" data-panel="security">
+                        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Enterprise-grade encryption</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Data in transit and at rest protected with modern ciphers.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">SOC 2 and GDPR aligned</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Controls and processes designed for rigorous compliance.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 flex gap-4 items-start">
+                                <div class="bg-gray-100 rounded-xl p-3 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900 font-pj mb-2">Privacy by design</h3>
+                                    <p class="text-gray-600 text-sm font-pj">Access controls, audit logs, and minimization baked into workflows.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="mt-12 text-center">
+                    <a href="#" class="inline-flex items-center px-8 py-3 text-base font-bold text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900" role="button">
+                        Get Early Access
+                    </a>
+                </div>
+            </div>
+
+            <script>
+                // Tab functionality for features section
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        // Reset all tabs
+                        document.querySelectorAll('.tab-btn').forEach(b => {
+                            b.classList.remove('text-white', 'bg-gray-900');
+                            b.classList.add('text-gray-700', 'bg-gray-100', 'hover:bg-gray-200');
+                        });
+                        
+                        // Hide all panels
+                        document.querySelectorAll('.feature-panel').forEach(p => p.classList.add('hidden'));
+                        
+                        // Activate clicked tab
+                        this.classList.remove('text-gray-700', 'bg-gray-100', 'hover:bg-gray-200');
+                        this.classList.add('text-white', 'bg-gray-900');
+                        
+                        // Show corresponding panel
+                        const tab = this.getAttribute('data-tab');
+                        document.querySelector('.feature-panel[data-panel="'+tab+'"]').classList.remove('hidden');
+                    });
+                });
+
+                // Demo segmented control functionality
+                document.querySelectorAll('.demo-tab').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        // Stop auto-switching when user manually clicks
+                        stopAutoSwitching();
+                        
+                        // Reset all demo tabs
+                        document.querySelectorAll('.demo-tab').forEach(b => {
+                            b.classList.remove('text-white', 'bg-[#102C65]', 'shadow-lg', 'hover:shadow-xl', 'transform', 'hover:-translate-y-0.5');
+                            b.classList.add('text-gray-600', 'bg-transparent', 'hover:bg-gray-50/80', 'hover:text-gray-800');
+                        });
+                        
+                        // Activate clicked demo tab
+                        this.classList.remove('text-gray-600', 'bg-transparent', 'hover:bg-gray-50/80', 'hover:text-gray-800');
+                        this.classList.add('text-white', 'bg-[#102C65]', 'shadow-lg', 'hover:shadow-xl', 'transform', 'hover:-translate-y-0.5');
+                        
+                        // Get the demo type
+                        const demoType = this.getAttribute('data-demo');
+                        
+                        // Hide all demo content
+                        document.querySelectorAll('.demo-content').forEach(content => {
+                            content.style.display = 'none';
+                        });
+                        
+                        // Show selected demo content
+                        const selectedDemo = document.querySelector(`.demo-content[data-demo="${demoType}"]`);
+                        if (selectedDemo) {
+                            selectedDemo.style.display = 'block';
+                        }
+                        
+                        // Initialize specific demo functionality
+                        if (demoType === 'interview') {
+                            // Initialize live demo when interview tab is selected
+                            setTimeout(() => {
+                                initializeLiveDemo();
+                            }, 100);
+                        } else {
+                            // Stop live demo if switching away from interview
+                            stopLiveTabSwitching();
+                        }
+                        
+                        // Update browser address bar text for different demos
+                        const addressBar = document.querySelector('.hero-frame .text-sm.text-gray-600');
+                        if (addressBar) {
+                            switch (demoType) {
+                                case 'scorecards':
+                                    addressBar.textContent = 'clarivue.com/scorecards/setup';
+                                    break;
+                                case 'interview':
+                                    addressBar.textContent = 'clarivue.com/interview/live';
+                                    break;
+                                case 'debrief':
+                                    addressBar.textContent = 'mail.google.com/interview-debrief';
+                                    break;
+                            }
+                        }
+                    });
+                });
+
+                // Auto-switching functionality
+                let autoSwitchInterval = null;
+                let autoSwitchIndex = 0;
+                let isAutoSwitching = false;
+                let demoCompletionCallbacks = {};
+                const autoSwitchTabs = ['scorecards', 'interview', 'debrief'];
+
+                function switchToTab(demoType) {
+                    // Find and click the corresponding tab
+                    const targetTab = document.querySelector(`.demo-tab[data-demo="${demoType}"]`);
+                    if (targetTab) {
+                        // Reset all demo tabs
+                        document.querySelectorAll('.demo-tab').forEach(b => {
+                            b.classList.remove('text-white', 'bg-[#102C65]', 'shadow-lg', 'hover:shadow-xl', 'transform', 'hover:-translate-y-0.5');
+                            b.classList.add('text-gray-600', 'bg-transparent', 'hover:bg-gray-50/80', 'hover:text-gray-800');
+                        });
+                        
+                        // Activate target tab
+                        targetTab.classList.remove('text-gray-600', 'bg-transparent', 'hover:bg-gray-50/80', 'hover:text-gray-800');
+                        targetTab.classList.add('text-white', 'bg-[#102C65]', 'shadow-lg', 'hover:shadow-xl', 'transform', 'hover:-translate-y-0.5');
+                        
+                        // Hide all demo content
+                        document.querySelectorAll('.demo-content').forEach(content => {
+                            content.style.display = 'none';
+                        });
+                        
+                        // Show selected demo content with fade transition
+                        const selectedDemo = document.querySelector(`.demo-content[data-demo="${demoType}"]`);
+                        if (selectedDemo) {
+                            selectedDemo.style.display = 'block';
+                            selectedDemo.style.opacity = '0';
+                            selectedDemo.style.transform = 'translateY(10px)';
+                            
+                            // Animate in
+                            setTimeout(() => {
+                                selectedDemo.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                selectedDemo.style.opacity = '1';
+                                selectedDemo.style.transform = 'translateY(0)';
+                            }, 50);
+                        }
+                        
+                        // Initialize specific demo functionality
+                        if (demoType === 'interview') {
+                            setTimeout(() => {
+                                initializeLiveDemo();
+                            }, 100);
+                        } else {
+                            stopLiveTabSwitching();
+                        }
+                        
+                        if (demoType === 'debrief') {
+                            isDebriefTabActive = true;
+                            setTimeout(() => {
+                                runDebriefDemo();
+                            }, 500);
+                        } else {
+                            stopDebriefDemo();
+                        }
+                        
+                        if (demoType === 'scorecards') {
+                            isJdTabActive = true;
+                            setTimeout(() => {
+                                runJdDemo();
+                            }, 200);
+                        } else {
+                            stopJdDemo();
+                        }
+                    }
+                }
+
+                function waitForDemoCompletion(demoType) {
+                    return new Promise((resolve) => {
+                        // Set up completion callback for this demo
+                        demoCompletionCallbacks[demoType] = resolve;
+                        
+                        // Set fallback timeout based on demo type
+                        let timeout;
+                        switch(demoType) {
+                            case 'scorecards':
+                                timeout = 15000; // JD demo takes about 12-14 seconds
+                                break;
+                            case 'interview':
+                                timeout = 10000; // Live interview cycles every 5 seconds, show 2 cycles
+                                break;
+                            case 'debrief':
+                                timeout = 8000; // Debrief demo takes about 6-7 seconds
+                                break;
+                            default:
+                                timeout = 10000;
+                        }
+                        
+                        setTimeout(() => {
+                            resolve();
+                        }, timeout);
+                    });
+                }
+
+                function notifyDemoCompletion(demoType) {
+                    if (demoCompletionCallbacks[demoType]) {
+                        demoCompletionCallbacks[demoType]();
+                        delete demoCompletionCallbacks[demoType];
+                    }
+                }
+
+                async function startAutoSwitching() {
+                    if (isAutoSwitching) return;
+                    isAutoSwitching = true;
+                    
+                    // Run through each tab exactly once
+                    for (let i = 0; i < autoSwitchTabs.length && isAutoSwitching; i++) {
+                        const currentTab = autoSwitchTabs[i];
+                        autoSwitchIndex = i;
+                        
+                        // Switch to the tab
+                        switchToTab(currentTab);
+                        
+                        // Wait for the demo animation to complete
+                        await waitForDemoCompletion(currentTab);
+                        
+                        // Add a brief pause between demos (except after the last one)
+                        if (isAutoSwitching && i < autoSwitchTabs.length - 1) {
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                        }
+                    }
+                    
+                    // Auto-switching is complete
+                    isAutoSwitching = false;
+                }
+
+                function stopAutoSwitching() {
+                    isAutoSwitching = false;
+                    // Clear any pending completion callbacks
+                    demoCompletionCallbacks = {};
+                }
+
+                // Start auto-switching when page loads
+                setTimeout(async () => {
+                    await startAutoSwitching();
+                }, 1000); // Wait 1 second after page load
+
+                // Stop auto-switching on user interaction
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.demo-tab')) {
+                        stopAutoSwitching();
+                    }
+                });
+
+                // Stop auto-switching on scroll (don't restart)
+                window.addEventListener('scroll', () => {
+                    stopAutoSwitching();
+                });
+
+                // Pause auto-switching when tab is not visible (don't restart)
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        stopAutoSwitching();
+                    }
+                });
+
+                // Debrief Demo Animation Functions
+                let demoRunning = false;
+                let currentDecision = '';
+                let demoInterval = null;
+                let isDebriefTabActive = false;
+
+                function movePointerTo(element, duration = 300) {
+                    return new Promise((resolve) => {
+                        const pointer = document.getElementById('demo-pointer');
+                        if (!pointer || !element) {
+                            resolve();
+                            return;
+                        }
+
+                        const rect = element.getBoundingClientRect();
+                        const x = rect.left + rect.width / 2;
+                        const y = rect.top + rect.height / 2;
+
+                        pointer.style.left = x + 'px';
+                        pointer.style.top = y + 'px';
+                        pointer.style.opacity = '1';
+
+                        setTimeout(() => resolve(), duration);
+                    });
+                }
+
+                function clickAnimation() {
+                    return new Promise((resolve) => {
+                        const pointer = document.getElementById('demo-pointer');
+                        if (!pointer) {
+                            resolve();
+                            return;
+                        }
+
+                        // Add click effect - scale down then back up
+                        pointer.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                        
+                        setTimeout(() => {
+                            pointer.style.transform = 'translate(-50%, -50%) scale(1)';
+                            setTimeout(() => resolve(), 150);
+                        }, 100);
+                    });
+                }
+
+                async function movePointerAndClick(element, duration = 300) {
+                    await movePointerTo(element, duration);
+                    await clickAnimation();
+                    if (element && isDebriefTabActive) {
+                        element.click();
+                    }
+                }
+
+                function typeInto(textarea, text, delayMs = 20) {
+                    return new Promise((resolve) => {
+                        let i = 0;
+                        const typeChar = () => {
+                            if (i < text.length && isDebriefTabActive) {
+                                textarea.value += text[i];
+                                i++;
+                                setTimeout(typeChar, delayMs);
+                            } else {
+                                resolve();
+                            }
+                        };
+                        typeChar();
+                    });
+                }
+
+                async function runDebriefDemo() {
+                    if (demoRunning || !isDebriefTabActive) return;
+                    demoRunning = true;
+
+                    try {
+                        // Start immediately with minimal delay
+                        await new Promise(r => setTimeout(r, 200));
+
+                        if (!isDebriefTabActive) return;
+
+                        // Move to Yes button and click
+                        const yesBtn = document.getElementById('yes-btn');
+                        await movePointerAndClick(yesBtn);
+                        if (!isDebriefTabActive) return;
+
+                        // Quick modal appearance and move to textarea
+                        await new Promise(r => setTimeout(r, 300));
+                        if (!isDebriefTabActive) return;
+                        const textarea = document.getElementById('reason-textarea');
+                        await movePointerAndClick(textarea);
+                        
+                        // Focus textarea and type quickly
+                        if (textarea && isDebriefTabActive) {
+                            textarea.value = '';
+                            await typeInto(textarea, 'Strong collaboration; schedule perf deep-dive.');
+                        }
+
+                        // Brief pause to show typed text
+                        await new Promise(r => setTimeout(r, 400));
+                        if (!isDebriefTabActive) return;
+
+                        // Move to submit button and click
+                        const submitBtn = document.getElementById('submit-btn');
+                        await movePointerAndClick(submitBtn);
+                        if (!isDebriefTabActive) return;
+
+                        // Quick success message display
+                        await new Promise(r => setTimeout(r, 800));
+                        if (!isDebriefTabActive) return;
+
+                        // Hide pointer
+                        const pointer = document.getElementById('demo-pointer');
+                        if (pointer) pointer.style.opacity = '0';
+
+                        // Short wait before restarting
+                        await new Promise(r => setTimeout(r, 1000));
+                        
+                        // Restart demo if still on debrief tab
+                        if (isDebriefTabActive) {
+                            // Reset the form first
+                            const textarea = document.getElementById('reason-textarea');
+                            if (textarea) textarea.value = '';
+                            closeModal();
+                            
+                            // Hide success message
+                            const successMsg = document.getElementById('success-message');
+                            if (successMsg) {
+                                successMsg.style.opacity = '0';
+                                successMsg.style.pointerEvents = 'none';
+                            }
+                            
+                            // Hide success modal
+                            const successModal = document.getElementById('success-modal');
+                            if (successModal) {
+                                successModal.style.opacity = '0';
+                                successModal.style.pointerEvents = 'none';
+                            }
+                            
+                            // Notify completion if this is part of auto-switching
+                            if (isAutoSwitching) {
+                                notifyDemoCompletion('debrief');
+                            } else {
+                                // Only restart if not auto-switching
+                                setTimeout(() => {
+                                    if (isDebriefTabActive && !isAutoSwitching) {
+                                        runDebriefDemo();
+                                    }
+                                }, 500);
+                            }
+                        }
+                    } finally {
+                        demoRunning = false;
+                    }
+                }
+
+                function handleDecisionClick(choice) {
+                    currentDecision = choice;
+                    const modal = document.getElementById('reason-modal');
+                    const decisionType = document.getElementById('decision-type');
+                    
+                    if (modal && decisionType) {
+                        let decisionText = '';
+                        switch (choice) {
+                            case 'yes':
+                                decisionText = 'Yes (move forward)';
+                                break;
+                            case 'no':
+                                decisionText = 'No (do not proceed)';
+                                break;
+                            case 'round':
+                                decisionText = 'Needs another round';
+                                break;
+                        }
+                        
+                        decisionType.textContent = decisionText;
+                        modal.style.opacity = '1';
+                        modal.style.pointerEvents = 'auto';
+                        
+                        const modalContent = document.getElementById('modal-content');
+                        if (modalContent) {
+                            modalContent.style.transform = 'scale(1)';
+                        }
+                    }
+                }
+
+                function closeModal() {
+                    const modal = document.getElementById('reason-modal');
+                    const modalContent = document.getElementById('modal-content');
+                    const textarea = document.getElementById('reason-textarea');
+                    
+                    if (modal) {
+                        modal.style.opacity = '0';
+                        modal.style.pointerEvents = 'none';
+                    }
+                    
+                    if (modalContent) {
+                        modalContent.style.transform = 'scale(0.95)';
+                    }
+                    
+                    if (textarea) {
+                        textarea.value = '';
+                    }
+                }
+
+                function submitReason() {
+                    closeModal();
+                    
+                    // Show success modal instead of just the small message
+                    const successModal = document.getElementById('success-modal');
+                    if (successModal) {
+                        successModal.style.opacity = '1';
+                        successModal.style.pointerEvents = 'auto';
+                        
+                        const modalContent = document.getElementById('success-modal-content');
+                        if (modalContent) {
+                            modalContent.style.transform = 'scale(1)';
+                        }
+                    }
+                }
+
+                function closeSuccessModal() {
+                    const successModal = document.getElementById('success-modal');
+                    const modalContent = document.getElementById('success-modal-content');
+                    
+                    if (successModal) {
+                        successModal.style.opacity = '0';
+                        successModal.style.pointerEvents = 'none';
+                    }
+                    
+                    if (modalContent) {
+                        modalContent.style.transform = 'scale(0.95)';
+                    }
+                }
+
+                function stopDebriefDemo() {
+                    isDebriefTabActive = false;
+                    demoRunning = false;
+                    
+                    // Hide pointer
+                    const pointer = document.getElementById('demo-pointer');
+                    if (pointer) pointer.style.opacity = '0';
+                    
+                    // Close modal
+                    closeModal();
+                    
+                    // Hide success message
+                    const successMsg = document.getElementById('success-message');
+                    if (successMsg) {
+                        successMsg.style.opacity = '0';
+                        successMsg.style.pointerEvents = 'none';
+                    }
+                    
+                    // Hide success modal
+                    const successModal = document.getElementById('success-modal');
+                    if (successModal) {
+                        successModal.style.opacity = '0';
+                        successModal.style.pointerEvents = 'none';
+                    }
+                    
+                    // Reset textarea
+                    const textarea = document.getElementById('reason-textarea');
+                    if (textarea) textarea.value = '';
+                }
+
+                // Handle tab switching and scroll detection
+                const originalDemoSwitcher = document.querySelectorAll('.demo-tab');
+                originalDemoSwitcher.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const demo = btn.getAttribute('data-demo');
+                        if (demo === 'debrief') {
+                            isDebriefTabActive = true;
+                            // Start demo immediately when tab is clicked
+                            setTimeout(() => {
+                                runDebriefDemo();
+                            }, 100);
+                        } else {
+                            stopDebriefDemo();
+                        }
+                    });
+                });
+
+                // Stop demo on scroll
+                let scrollTimeout;
+                window.addEventListener('scroll', () => {
+                    if (isDebriefTabActive) {
+                        stopDebriefDemo();
+                    }
+                });
+
+                // Stop demo when user leaves the page
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden && isDebriefTabActive) {
+                        stopDebriefDemo();
+                    }
+                });
+
+                // JD → Scorecards Demo Functionality
+                let jdDemoRunning = false;
+                let isJdTabActive = false;
+                let jdMetrics = [];
+                let editMode = false;
+                let highlightIdx = null;
+                
+                const JD_DEMO_SPEED = 1.0; // Match debrief demo speed (no multiplier)
+                const jdWait = (ms) => new Promise(r => setTimeout(r, ms * JD_DEMO_SPEED));
+
+                const sampleJD = `We are hiring a Frontend Engineer to build high-quality, accessible UI. Must be strong in TypeScript, React, performance profiling (Lighthouse, Web Vitals), design collaboration, and ownership. Familiarity with testing (RTL/Cypress) and a11y best practices is required.`;
+
+                // Auto-resize textarea function
+                function autoResizeTextarea(textarea) {
+                    if (!textarea) return;
+                    
+                    // Reset height to get accurate scrollHeight
+                    textarea.style.height = 'auto';
+                    
+                    // Calculate new height with minimum and maximum constraints
+                    const minHeight = 176; // min-h-[176px] = 11rem = 176px
+                    const maxHeight = 400; // Maximum height to prevent too much expansion
+                    const newHeight = Math.max(minHeight, Math.min(maxHeight, textarea.scrollHeight));
+                    
+                    textarea.style.height = newHeight + 'px';
+                }
+
+                // Live Interview Demo functionality
+                let liveCurrentTab = 'prompt';
+                let liveTabSwitchInterval;
+                const liveTabOrder = ['prompt', 'scorecard'];
+
+                function initializeLiveDemo() {
+                    // Set initial active tab
+                    setLiveActiveTab('prompt');
+                    
+                    // Start auto-switching tabs
+                    startLiveTabSwitching();
+                    
+                    // Add click handlers for manual tab switching
+                    document.querySelectorAll('.live-demo-tab').forEach(tab => {
+                        tab.addEventListener('click', (e) => {
+                            const tabName = e.target.getAttribute('data-tab');
+                            setLiveActiveTab(tabName);
+                            // Restart auto-switching from this tab
+                            restartLiveTabSwitching();
+                        });
+                    });
+
+                    // Animate speaking indicator
+                    animateSpeakingIndicator();
+                    
+                    // Set up completion notification for auto-switching
+                    if (isAutoSwitching) {
+                        setTimeout(() => {
+                            notifyDemoCompletion('interview');
+                        }, 10000); // Show 2 cycles of tab switching (2 * 5 seconds)
+                    }
+                }
+
+                function setLiveActiveTab(tabName) {
+                    liveCurrentTab = tabName;
+                    
+                    // Update tab buttons
+                    document.querySelectorAll('.live-demo-tab').forEach(tab => {
+                        const isActive = tab.getAttribute('data-tab') === tabName;
+                        if (isActive) {
+                            tab.classList.add('text-white', 'border-[#A78BFA]', 'bg-white/20');
+                            tab.classList.remove('text-gray-400', 'border-transparent');
+                        } else {
+                            tab.classList.remove('text-white', 'border-[#A78BFA]', 'bg-white/20');
+                            tab.classList.add('text-gray-400', 'border-transparent');
+                        }
+                    });
+                    
+                    // Update tab content with slide animation
+                    document.querySelectorAll('.live-tab-content').forEach(content => {
+                        const isActiveContent = content.getAttribute('data-tab') === tabName;
+                        if (isActiveContent) {
+                            content.classList.remove('hidden');
+                            content.style.opacity = '0';
+                            content.style.transform = 'translateX(20px)';
+                            setTimeout(() => {
+                                content.style.transition = 'all 0.3s ease-out';
+                                content.style.opacity = '1';
+                                content.style.transform = 'translateX(0)';
+                            }, 10);
+                        } else {
+                            content.style.transition = 'all 0.2s ease-in';
+                            content.style.opacity = '0';
+                            content.style.transform = 'translateX(-20px)';
+                            setTimeout(() => {
+                                content.classList.add('hidden');
+                            }, 200);
+                        }
+                    });
+                }
+
+                function startLiveTabSwitching() {
+                    liveTabSwitchInterval = setInterval(() => {
+                        const currentIndex = liveTabOrder.indexOf(liveCurrentTab);
+                        const nextIndex = (currentIndex + 1) % liveTabOrder.length;
+                        setLiveActiveTab(liveTabOrder[nextIndex]);
+                    }, 5000); // Switch every 5 seconds
+                }
+
+                function stopLiveTabSwitching() {
+                    if (liveTabSwitchInterval) {
+                        clearInterval(liveTabSwitchInterval);
+                    }
+                }
+
+                function restartLiveTabSwitching() {
+                    stopLiveTabSwitching();
+                    startLiveTabSwitching();
+                }
+
+                // Speaking indicator animation
+                function animateSpeakingIndicator() {
+                    const indicator = document.querySelector('.live-speaking-indicator');
+                    if (indicator) {
+                        indicator.style.animation = 'pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite';
+                    }
+                }
+
+                function deriveMetrics(text) {
+                    const t = text.toLowerCase();
+                    const out = [];
+                    if (/typescript|\bts\b/.test(t)) out.push({ title: "TypeScript", desc: "Static typing and TS-first patterns.", weight: 18 });
+                    if (/react/.test(t)) out.push({ title: "React", desc: "Modern React (hooks, composition, state mgmt).", weight: 20 });
+                    if (/accessib|a11y/.test(t)) out.push({ title: "Accessibility", desc: "Meets WCAG; uses AX tools and keyboard flows.", weight: 15 });
+                    if (/own(er|s)hip|ownership/.test(t)) out.push({ title: "Ownership", desc: "End-to-end accountability and follow-through.", weight: 15 });
+                    if (/(test|rtl|cypress)/.test(t)) out.push({ title: "Testing coverage", desc: "Meaningful unit/e2e tests; env & thresholds.", weight: 15, tone: "warn" });
+                    if (/(perf|performance|lighthouse|web vitals|profil)/.test(t)) out.push({ title: "Performance tuning depth", desc: "Profiling + concrete Web Vitals targets.", weight: 17, tone: "warn" });
+                    if (/(design|collab|collaborat)/.test(t)) out.push({ title: "Collaboration", desc: "Partnering with design & cross-team comms.", weight: 15 });
+                    
+                    const capped = out.slice(0, 6);
+                    const total = capped.reduce((s, m) => s + m.weight, 0) || 1;
+                    const normalized = capped.map((m) => ({ ...m, weight: Math.round((m.weight / total) * 100) }));
+                    const drift = 100 - normalized.reduce((s, m) => s + m.weight, 0);
+                    if (normalized.length > 0) normalized[0].weight += drift;
+                    return normalized;
+                }
+
+                function moveJdPointerTo(element, duration = 300) {
+                    return new Promise((resolve) => {
+                        const pointer = document.getElementById('jd-demo-pointer');
+                        if (!pointer || !element) {
+                            resolve();
+                            return;
+                        }
+
+                        const rect = element.getBoundingClientRect();
+                        const x = rect.left + rect.width / 2;
+                        const y = rect.top + rect.height / 2;
+
+                        // Apply spring-like transition matching React's framer-motion settings
+                        pointer.style.transition = 'left 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.15s ease';
+                        pointer.style.left = x + 'px';
+                        pointer.style.top = y + 'px';
+                        pointer.style.opacity = '1';
+
+                        setTimeout(() => resolve(), duration);
+                    });
+                }
+
+                function jdClickAnimation() {
+                    return new Promise((resolve) => {
+                        const pointer = document.getElementById('jd-demo-pointer');
+                        if (!pointer) {
+                            resolve();
+                            return;
+                        }
+
+                        pointer.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                        
+                        setTimeout(() => {
+                            pointer.style.transform = 'translate(-50%, -50%) scale(1)';
+                            setTimeout(() => resolve(), 150);
+                        }, 100);
+                    });
+                }
+
+                async function moveJdPointerAndClick(element, duration = 300) {
+                    await moveJdPointerTo(element, duration);
+                    await jdClickAnimation();
+                    if (element && isJdTabActive) {
+                        element.click();
+                    }
+                }
+
+                function jdTypeInto(textarea, text, delayMs = 15) {
+                    return new Promise((resolve) => {
+                        let i = 0;
+                        const typeChar = () => {
+                            if (i < text.length && isJdTabActive) {
+                                textarea.value += text[i];
+                                autoResizeTextarea(textarea); // Auto-resize as we type
+                                i++;
+                                setTimeout(typeChar, delayMs);
+                            } else {
+                                resolve();
+                            }
+                        };
+                        typeChar();
+                    });
+                }
+
+                function renderMetricCards() {
+                    const container = document.getElementById('jd-metric-cards');
+                    if (!container) return;
+                    
+                    container.innerHTML = '';
+                    jdMetrics.forEach((metric, idx) => {
+                        const toneClasses = metric.tone === "warn" 
+                            ? "border-amber-200 bg-amber-50/70" 
+                            : "border-indigo-100 bg-indigo-50/70";
+                        
+                        const card = document.createElement('div');
+                        const highlightClass = highlightIdx === idx ? "ring-2 ring-[#C9A0FF]" : "";
+                        card.className = `rounded-md border ${toneClasses} px-2 py-1 text-[11.5px] leading-[1.2rem] shadow-sm ${highlightClass} transition-all duration-200`;
+                        
+                        if (editMode) {
+                            card.innerHTML = `
+                                <div class="mb-1 flex items-start justify-between gap-2">
+                                    <input
+                                        value="${metric.title}"
+                                        onchange="updateMetric(${idx}, 'title', this.value)"
+                                        class="w-full rounded-md border border-zinc-200 bg-white px-1.5 py-0.5 text-[12px] font-medium text-zinc-800 outline-none focus:ring-2 focus:ring-[#C9A0FF]/30"
+                                    />
+                                    <button class="rounded-md p-1 text-zinc-500 hover:bg-zinc-100" onclick="removeMetric(${idx})" aria-label="Remove metric ${idx + 1}">
+                                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <textarea
+                                    onchange="updateMetric(${idx}, 'desc', this.value)"
+                                    class="mt-1 h-12 w-full resize-none rounded-md border border-zinc-200 bg-white px-1.5 py-1 text-[12px] text-zinc-800 outline-none focus:ring-2 focus:ring-[#C9A0FF]/30"
+                                >${metric.desc}</textarea>
+                                <div class="mt-1.5 grid grid-cols-[1fr_auto] items-center gap-1.5">
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="100"
+                                        step="1"
+                                        value="${metric.weight}"
+                                        onchange="updateMetric(${idx}, 'weight', parseInt(this.value))"
+                                        class="w-full"
+                                    />
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max="100"
+                                        value="${metric.weight}"
+                                        onchange="updateMetric(${idx}, 'weight', parseInt(this.value))"
+                                        class="w-14 rounded-md border border-zinc-200 bg-white px-1.5 py-1 text-[12px] text-zinc-800 outline-none focus:ring-2 focus:ring-[#C9A0FF]/30"
+                                        ${idx === 0 ? 'id="first-number-input"' : ''}
+                                    />
+                                </div>
+                                <div class="mt-0.5 text-[10px] text-zinc-600">Weights are percentages; aim for a total of 100%.</div>
+                            `;
+                        } else {
+                            card.innerHTML = `
+                                <div class="flex items-start justify-between">
+                                    <div class="font-medium text-zinc-800">${metric.title}</div>
+                                    <span class="ml-3 inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-medium text-zinc-700 ring-1 ring-zinc-200/60">${metric.weight}%</span>
+                                </div>
+                                <div class="mt-0.5 text-[11px] text-zinc-600">
+                                    <span class="mr-1 font-semibold text-zinc-700">Expectation:</span>
+                                    ${metric.desc}
+                                </div>
+                            `;
+                        }
+                        container.appendChild(card);
+                    });
+                }
+
+                function updateMetric(idx, field, value) {
+                    if (idx >= 0 && idx < jdMetrics.length) {
+                        jdMetrics[idx][field] = value;
+                        const totalWeight = jdMetrics.reduce((s, m) => s + m.weight, 0);
+                        const totalWeightEl = document.getElementById('total-weight');
+                        if (totalWeightEl) {
+                            totalWeightEl.textContent = `${totalWeight}%`;
+                        }
+                        renderMetricCards();
+                    }
+                }
+
+                function removeMetric(idx) {
+                    if (idx >= 0 && idx < jdMetrics.length) {
+                        jdMetrics.splice(idx, 1);
+                        renderMetricCards();
+                        const totalWeight = jdMetrics.reduce((s, m) => s + m.weight, 0);
+                        const totalWeightEl = document.getElementById('total-weight');
+                        if (totalWeightEl) {
+                            totalWeightEl.textContent = `${totalWeight}%`;
+                        }
+                    }
+                }
+
+                function toggleEditMode() {
+                    editMode = !editMode;
+                    const editBtn = document.getElementById('edit-metrics-btn');
+                    const editBtnText = document.getElementById('edit-btn-text');
+                    if (editBtn && editBtnText) {
+                        editBtnText.textContent = editMode ? "Done editing" : "Edit metrics";
+                    }
+                    renderMetricCards();
+                }
+
+                async function generateScorecardsDemo() {
+                    if (!isJdTabActive) return;
+                    
+                    const loadingState = document.getElementById('jd-loading-state');
+                    const loadingStepText = document.getElementById('loading-step-text');
+                    const placeholderCards = document.getElementById('jd-placeholder-cards');
+                    const metricCardsContainer = document.getElementById('jd-metric-cards');
+                    const header = document.getElementById('jd-scorecards-header');
+                    const footer = document.getElementById('jd-footer');
+                    const totalWeightEl = document.getElementById('total-weight');
+
+                    // Show loading
+                    placeholderCards.style.display = 'none';
+                    loadingState.style.display = 'flex';
+                    
+                    const steps = [
+                        "Analyzing JD…",
+                        "Extracting competencies…", 
+                        "Mapping competencies to metrics…",
+                        "Adapting for context…"
+                    ];
+
+                    // Much faster loading steps to match debrief demo speed
+                    for (let step of steps) {
+                        if (!isJdTabActive) return;
+                        loadingStepText.textContent = step;
+                        await jdWait(300); // Much faster - 300ms vs 900ms
+                    }
+
+                    if (!isJdTabActive) return;
+
+                    // Generate and show metrics directly after loading
+                    const textarea = document.getElementById('jd-textarea');
+                    jdMetrics = deriveMetrics(textarea.value);
+                    
+                    loadingState.style.display = 'none';
+                    header.style.display = 'flex';
+                    metricCardsContainer.style.display = 'grid';
+                    footer.style.display = 'flex';
+                    
+                    renderMetricCards();
+                    
+                    const totalWeight = jdMetrics.reduce((s, m) => s + m.weight, 0);
+                    totalWeightEl.textContent = `${totalWeight}%`;
+                }
+
+                function showJdSuccessToast() {
+                    const toast = document.getElementById('jd-success-toast');
+                    if (toast) {
+                        toast.style.opacity = '1';
+                        toast.style.pointerEvents = 'auto';
+                        setTimeout(() => {
+                            toast.style.opacity = '0';
+                            toast.style.pointerEvents = 'none';
+                        }, 800); // Faster - match debrief demo speed
+                    }
+                }
+
+                function showJdCongratsModal() {
+                    const modal = document.getElementById('jd-congrats-modal');
+                    if (modal) {
+                        modal.style.opacity = '1';
+                        modal.style.pointerEvents = 'auto';
+                        modal.querySelector('div').style.transform = 'scale(1)';
+                        
+                        setTimeout(() => {
+                            modal.style.opacity = '0';
+                            modal.style.pointerEvents = 'none';
+                            modal.querySelector('div').style.transform = 'scale(0.95)';
+                        }, 1200); // Faster - match debrief demo speed
+                    }
+                }
+
+                async function runJdDemo() {
+                    if (jdDemoRunning || !isJdTabActive) return;
+                    jdDemoRunning = true;
+
+                    try {
+                        await jdWait(200); // Match debrief demo initial delay
+                        if (!isJdTabActive) return;
+
+                        // Move to textarea 
+                        const textarea = document.getElementById('jd-textarea');
+                        await moveJdPointerAndClick(textarea, 300); // Faster movement
+                        if (!isJdTabActive) return;
+
+                        // Clear and type sample JD
+                        await jdWait(100); // Shorter wait
+                        if (!isJdTabActive) return;
+
+                        textarea.value = '';
+                        await jdTypeInto(textarea, sampleJD, 15); // Faster typing
+                        if (!isJdTabActive) return;
+
+                        await jdWait(300); // Shorter wait
+
+                        // Move to generate button and click
+                        const generateBtn = document.getElementById('generate-scorecards-btn');
+                        await moveJdPointerAndClick(generateBtn, 300); // Faster movement
+                        if (!isJdTabActive) return;
+
+                        // Run generation process (faster)
+                        await generateScorecardsDemo();
+                        if (!isJdTabActive) return;
+
+                        // Move to edit button and activate edit mode
+                        const editBtn = document.getElementById('edit-metrics-btn');
+                        await moveJdPointerAndClick(editBtn, 300); // Faster movement
+                        if (!isJdTabActive) return;
+
+                        toggleEditMode();
+                        highlightIdx = 0;
+                        renderMetricCards();
+                        
+                        await jdWait(200); // Shorter wait
+
+                        // Move to first number input and adjust weight
+                        const firstNumberInput = document.getElementById('first-number-input');
+                        await moveJdPointerAndClick(firstNumberInput, 300); // Faster movement
+                        if (!isJdTabActive) return;
+
+                        // Simulate weight adjustment (decrease by 1)
+                        if (jdMetrics.length > 0) {
+                            const newWeight = Math.max(1, jdMetrics[0].weight - 1);
+                            updateMetric(0, 'weight', newWeight);
+                        }
+
+                        await jdWait(200); // Shorter wait
+
+                        // Clear highlight and exit edit mode
+                        highlightIdx = null;
+                        renderMetricCards();
+                        
+                        await moveJdPointerAndClick(editBtn, 300); // Faster movement
+                        if (!isJdTabActive) return;
+
+                        toggleEditMode();
+                        
+                        await jdWait(300); // Shorter wait
+
+                        // Move to save button and click
+                        const saveBtn = document.getElementById('save-scorecards-btn');
+                        await moveJdPointerAndClick(saveBtn, 300); // Faster movement
+                        if (!isJdTabActive) return;
+
+                        // Show success feedback
+                        showJdSuccessToast();
+                        showJdCongratsModal();
+
+                        await jdWait(800); // Match debrief success display time
+
+                        // Hide pointer
+                        const pointer = document.getElementById('jd-demo-pointer');
+                        if (pointer) pointer.style.opacity = '0';
+
+                        // Restart demo after delay (match debrief restart timing)
+                        await jdWait(1000);
+                        if (isJdTabActive) {
+                            resetJdDemo();
+                            // Notify completion if this is part of auto-switching
+                            if (isAutoSwitching) {
+                                notifyDemoCompletion('scorecards');
+                            } else {
+                                // Only restart if not auto-switching
+                                setTimeout(() => {
+                                    if (isJdTabActive && !isAutoSwitching) {
+                                        runJdDemo();
+                                    }
+                                }, 500);
+                            }
+                        }
+                    } finally {
+                        jdDemoRunning = false;
+                    }
+                }
+
+                function resetJdDemo() {
+                    const textarea = document.getElementById('jd-textarea');
+                    const loadingState = document.getElementById('jd-loading-state');
+                    const placeholderCards = document.getElementById('jd-placeholder-cards');
+                    const metricCardsContainer = document.getElementById('jd-metric-cards');
+                    const header = document.getElementById('jd-scorecards-header');
+                    const footer = document.getElementById('jd-footer');
+
+                    if (textarea) {
+                        textarea.value = '';
+                        autoResizeTextarea(textarea); // Reset height when clearing
+                    }
+                    if (loadingState) loadingState.style.display = 'none';
+                    if (placeholderCards) placeholderCards.style.display = 'grid';
+                    if (metricCardsContainer) metricCardsContainer.style.display = 'none';
+                    if (header) header.style.display = 'none';
+                    if (footer) footer.style.display = 'none';
+                    
+                    // Reset edit mode state
+                    editMode = false;
+                    highlightIdx = null;
+                    jdMetrics = [];
+                    
+                    const editBtnText = document.getElementById('edit-btn-text');
+                    if (editBtnText) {
+                        editBtnText.textContent = "Edit metrics";
+                    }
+                }
+
+                function stopJdDemo() {
+                    isJdTabActive = false;
+                    jdDemoRunning = false;
+                    
+                    const pointer = document.getElementById('jd-demo-pointer');
+                    if (pointer) pointer.style.opacity = '0';
+                    
+                    resetJdDemo();
+                }
+
+                // Add JD demo to tab switching logic
+                const demoTabs = document.querySelectorAll('.demo-tab');
+                demoTabs.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const demo = btn.getAttribute('data-demo');
+                        
+                        // Stop all demos first
+                        stopDebriefDemo();
+                        stopJdDemo();
+                        
+                        if (demo === 'debrief') {
+                            isDebriefTabActive = true;
+                            setTimeout(() => {
+                                runDebriefDemo();
+                            }, 100);
+                        } else if (demo === 'scorecards') {
+                            isJdTabActive = true;
+                            // Start JD demo immediately
+                            setTimeout(() => {
+                                runJdDemo();
+                            }, 200);
+                        }
+                    });
+                });
+
+                // Add event listeners for manual interaction
+                document.getElementById('generate-scorecards-btn')?.addEventListener('click', generateScorecardsDemo);
+                document.getElementById('edit-metrics-btn')?.addEventListener('click', toggleEditMode);
+                document.getElementById('save-scorecards-btn')?.addEventListener('click', () => {
+                    showJdSuccessToast();
+                    showJdCongratsModal();
+                });
+
+                // Add auto-resize functionality to textarea
+                const jdTextarea = document.getElementById('jd-textarea');
+                if (jdTextarea) {
+                    // Auto-resize on input
+                    jdTextarea.addEventListener('input', function() {
+                        autoResizeTextarea(this);
+                    });
+                    
+                    // Auto-resize on paste
+                    jdTextarea.addEventListener('paste', function() {
+                        setTimeout(() => autoResizeTextarea(this), 0);
+                    });
+                    
+                    // Initial resize on page load
+                    autoResizeTextarea(jdTextarea);
+                }
+
+                // Removed scroll stop - let demo keep playing continuously
+
+                // Start JD demo by default since it's the first tab
+                document.addEventListener('DOMContentLoaded', () => {
+                    // Ensure the scorecards tab is active by default
+                    isJdTabActive = true;
+                    setTimeout(() => {
+                        if (isJdTabActive) {
+                            runJdDemo();
+                        }
+                    }, 200); // Start faster for immediate engagement
+                });
+
+                // Also start when page is ready if DOMContentLoaded already fired
+                if (document.readyState === 'loading') {
+                    // Document still loading, use DOMContentLoaded
+                } else {
+                    // Document already loaded
+                    isJdTabActive = true;
+                    setTimeout(() => {
+                        if (isJdTabActive) {
+                            runJdDemo();
+                        }
+                    }, 200); // Start faster for immediate engagement
+                }
+
+                // Additional trigger on window load
+                window.addEventListener('load', () => {
+                    if (isJdTabActive && !jdDemoRunning) {
+                        setTimeout(() => {
+                            if (isJdTabActive && !jdDemoRunning) {
+                                runJdDemo();
+                            }
+                        }, 100); // Even faster backup trigger
+                    }
+                });
+
+                // Intersection Observer to ensure demo starts when visible (but doesn't stop it)
+                const heroFrame = document.getElementById('hero-frame-content');
+                if (heroFrame && 'IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && isJdTabActive && !jdDemoRunning) {
+                                setTimeout(() => {
+                                    if (isJdTabActive && !jdDemoRunning) {
+                                        runJdDemo();
+                                    }
+                                }, 100);
+                            }
+                            // Removed the stop condition - demo keeps playing even when not visible
+                        });
+                    }, {
+                        threshold: 0.2,
+                        rootMargin: '0px 0px -20px 0px'
+                    });
+                    
+                    observer.observe(heroFrame);
+                }
+
+                // Initialize Live Demo if on interview tab
+                document.addEventListener('DOMContentLoaded', () => {
+                    // Check if interview tab is active on page load
+                    const interviewTab = document.querySelector('.demo-tab[data-demo="interview"]');
+                    if (interviewTab && interviewTab.classList.contains('bg-[#102C65]')) {
+                        setTimeout(() => {
+                            initializeLiveDemo();
+                        }, 500);
+                    }
+                });
+            </script>
+        </section>
+        <section class="relative py-12 overflow-hidden bg-gray-50 sm:py-16 lg:py-20 xl:py-32">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="grid items-center grid-cols-1 xl:grid-cols-2">
+                    <div class="px-8 text-center xl:text-left xl:pr-16 md:max-w-2xl md:mx-auto xl:max-w-none">
+                        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl font-pj">Teams trust Clarivue in live interviews</h2>
+                        <p class="mt-6 text-lg font-normal text-gray-600 font-pj">Faster decisions. Better candidate experience. Less post-interview admin.</p>
+                    </div>
+
+                    <div class="relative mt-8 sm:mt-12 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mt-0">
+                        <div class="absolute inset-16">
+                            <div class="w-full h-full mx-auto rotate-180 opacity-30 rounded-3xl blur-lg filter" style="background: linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)"></div>
+                        </div>
+
+                        <div class="relative space-y-5">
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-vertex.svg" alt="" />
+                                </div>
+
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-martino.svg" alt="" />
+                                </div>
+
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-squarestone.svg" alt="" />
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-3 xl:translate-x-6">
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-waverio.svg" alt="" />
+                                </div>
+
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-fireli.svg" alt="" />
+                                </div>
+
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-virogan.svg" alt="" />
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-3 xl:translate-x-12">
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-aromix.svg" alt="" />
+                                </div>
+
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-natroma.svg" alt="" />
+                                </div>
+
+                                <div class="flex items-center justify-center px-6 py-4 mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-44 md:w-full">
+                                    <img class="w-auto h-8" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/3/logo-waverio-2.svg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute inset-0 bg-gradient-to-b xl:bg-gradient-to-r from-transparent via-transparent to-gray-50"></div>
+        </section>
+        <section class="py-12 bg-white sm:py-16 lg:py-20">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl xl:text-5xl font-pj">Purpose built intelligence for all job interviews</h2>
+                    <p class="mt-4 text-lg text-gray-600 font-pj">The ultimate solution for streamlining your interview process.</p>
+                </div>
+
+                <div class="grid grid-cols-1 mt-10 text-left sm:mt-16 gap-y-16 md:grid-cols-3 md:gap-x-16">
+                    <div class="md:p-4">
+                        <svg class="mb-8" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M45 29V23C45 10.85 35.15 1 23 1C10.85 1 1 10.85 1 23V29" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M13 29H1V41C1 43.209 2.791 45 5 45H13V29Z" fill="#D4D4D8" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M45 29H33V45H41C43.209 45 45 43.209 45 41V29Z" fill="#D4D4D8" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <h3 class="text-xl font-bold text-gray-900 font-pj mb-4">Recruitment Teams</h3>
+                        <p class="text-base text-gray-600 font-pj leading-relaxed">You move faster from intake to offer. You run structured calls with live prompts and one-tap scoring. Scorecards stay consistent across recruiters. Evidence links back every score. Debriefs go out in 24 hours so decision is made while the signal is fresh.</p>
+                    </div>
+
+                    <div class="md:p-4">
+                        <svg class="mb-8" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27 27H19V45H27V27Z" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M9 37H1V45H9V37Z" fill="#D4D4D8" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M45 17H37V45H45V17Z" fill="#D4D4D8" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M5 17L15 7L23 15L37 1" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M28 1H37V10" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <h3 class="text-xl font-bold text-gray-900 font-pj mb-4">Hiring managers</h3>
+                        <p class="text-base text-gray-600 font-pj leading-relaxed">You review, not recall. Highlights, flags, and gaps surface in one place. Scores link to exact moments in the call. You give a clear yes or no in one click. Post-interview admin drops.</p>
+                    </div>
+
+                    <div class="md:p-4">
+                        <svg class="mb-8" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M41 1H1V41H41V1Z" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M18 7H7V20H18V7Z" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M18 26H7V35H18V26Z" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M35 7H24V35H35V7Z" fill="#D4D4D8" stroke="#161616" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <h3 class="text-xl font-bold text-gray-900 font-pj mb-4">Career coaches</h3>
+                        <p class="text-base text-gray-600 font-pj leading-relaxed">You run practice interviews with structure. Prompts map to role competencies. Learners see highlights, gaps, and next steps. Scorecards track progress over time. Placements move faster with consistent feedback.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <a href="#" class="inline-flex items-center px-8 py-3 text-base font-bold text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900" role="button">
+                        See how it works
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="py-12 bg-white sm:py-16 lg:py-20">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="grid items-center grid-cols-1 gap-8 md:grid-cols-3">
+                    <div>
+                        <img class="w-full md:hidden" src="https://cdn.rareblocks.xyz/collection/clarity/images/integrations/3/top-logos.png" alt="" />
+                        <img class="hidden w-full lg:translate-y-12 md:block" src="https://cdn.rareblocks.xyz/collection/clarity/images/integrations/3/left-logos.png" alt="" />
+                    </div>
+
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl font-pj">Works with your stack</h2>
+                        <p class="mt-6 text-lg font-normal text-gray-600 font-pj">Connect your ATS and calendar. Join any meeting and start. Greenhouse, Lever, Workday. Zoom, Google Meet, Teams.</p>
+                    </div>
+
+                    <div>
+                        <img class="w-full md:hidden" src="https://cdn.rareblocks.xyz/collection/clarity/images/integrations/3/bottom-logos.png" alt="" />
+                        <img class="hidden w-full lg:translate-y-12 md:block" src="https://cdn.rareblocks.xyz/collection/clarity/images/integrations/3/right-logos.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-12 bg-gray-900 sm:py-16 lg:py-24">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="grid items-center grid-cols-1 gap-10 sm:gap-16 lg:grid-cols-2">
+                    <div>
+                        <div class="max-w-sm mx-auto bg-white xl:max-w-md rounded-2xl -rotate-3">
+                            <div class="p-6 sm:px-10 sm:py-12">
+                                <img class="w-auto h-7" src="https://cdn.rareblocks.xyz/collection/clarity/images/cta/3/crowny-logo.svg" alt="" />
+
+                                <blockquote class="mt-6">
+                                    <p class="text-lg font-normal leading-relaxed text-gray-900 font-pj">“Interviews stopped drifting. Our scorecards went from optional to automatic.”</p>
+                                </blockquote>
+
+                                <div class="flex items-center justify-between mt-8">
+                                    <div class="flex items-center">
+                                        <img class="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/cta/3/avatar-female.png" alt="" />
+                                        <div class="ml-3">
+                                            <p class="text-lg font-bold text-gray-900 font-pj">Priya Shah</p>
+                                            <p class="text-base font-pj font-normal text-gray-600 mt-0.5">Director of Talent, Northview</p>
+                                        </div>
+                                    </div>
+
+                                    <img class="w-auto h-12" src="https://cdn.rareblocks.xyz/collection/clarity/images/cta/3/signature.svg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="max-w-md mx-auto text-center lg:max-w-none lg:text-left">
+                        <h2 class="text-3xl font-bold text-white sm:text-4xl xl:text-5xl font-pj">See Clarivue in action</h2>
+                        <p class="mt-8 text-base font-normal leading-7 text-gray-300 font-pj">Share your role. We show live prompts, scorecards, and the post-interview report.</p>
+
+                        <form action="#" method="POST" class="mt-16">
+                            <label for="" class="text-lg font-bold text-white font-pj"> Enter your work email to schedule </label>
+                            <div class="relative max-w-lg mx-auto mt-5 lg:mx-0">
+                                <div class="absolute -inset-2">
+                                    <div class="w-full h-full mx-auto rotate-180 opacity-30 blur-lg filter" style="background: linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)"></div>
+                                </div>
+
+                                <div class="relative">
+                                    <input
+                                        type="email"
+                                        name=""
+                                        id=""
+                                        placeholder="Work email"
+                                        class="block w-full px-5 py-6 text-base font-normal text-white placeholder-gray-400 bg-gray-900 border border-transparent rounded-xl focus:border-white focus:ring-1 focus:ring-white font-pj focus:outline-none"
+                                    />
+
+                                    <div class="mt-4 sm:mt-0 sm:absolute sm:inset-y-0 sm:right-0 sm:flex sm:items-center sm:pr-3">
+                                        <button
+                                            type="submit"
+                                            class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold text-gray-900 transition-all duration-200 bg-white border border-transparent sm:py-3 sm:w-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white font-pj hover:bg-opacity-90 rounded-xl"
+                                        >
+                                            Book demo
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="py-12 bg-gray-900 sm:py-16 lg:py-20">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="md:flex md:items-center md:justify-between">
+                    <h5 class="max-w-xl text-3xl font-bold text-white sm:text-4xl xl:text-5xl font-pj">Run confident interviews</h5>
+
+                    <div class="max-w-sm mt-8 md:mt-0">
+                        <ul class="space-y-7">
+                            <li class="flex items-start">
+                                <div class="flex items-center space-x-4">
+                                    <!-- LinkedIn -->
+                                    <a href="#" class="text-white hover:text-gray-300 transition-colors duration-200">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                        </svg>
+                                    </a>
+                                    
+                                    <!-- Instagram -->
+                                    <a href="#" class="text-white hover:text-gray-300 transition-colors duration-200">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                        </svg>
+                                    </a>
+                                    
+                                    <!-- Facebook -->
+                                    <a href="#" class="text-white hover:text-gray-300 transition-colors duration-200">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span class="ml-5 text-xl font-normal text-white font-pj"> hello@clarivue.io </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="mt-12 border-gray-600 md:mt-20" />
+
+                <div class="mt-10 lg:flex lg:items-center lg:justify-between md:mt-16">
+                    <ul class="flex items-center space-x-6 sm:space-x-12">
+                        <li>
+                            <a href="#" title="" class="text-lg font-medium text-white transition-all duration-200 font-pj hover:text-gray-300"> About </a>
+                        </li>
+
+                        <li>
+                            <a href="#" title="" class="text-lg font-medium text-white transition-all duration-200 font-pj hover:text-gray-300"> Terms of Services </a>
+                        </li>
+
+                        <li>
+                            <a href="#" title="" class="text-lg font-medium text-white transition-all duration-200 font-pj hover:text-gray-300"> Privacy </a>
+                        </li>
+
+                        <li>
+                            <a href="#" title="" class="text-lg font-medium text-white transition-all duration-200 font-pj hover:text-gray-300"> Support </a>
+                        </li>
+                    </ul>
+
+                    <p class="mt-8 text-lg font-normal text-white lg:mt-0 font-pj">© Clarivue. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
