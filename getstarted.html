@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Get Started - Clarivue</title>
+        
+        <!-- Optimized Favicon Links -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-clarivue/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-clarivue/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/public/favicon-clarivue/favicon-96x96.png">
+        <link rel="apple-touch-icon" href="/public/favicon-clarivue/apple-touch-icon.png">
+        <link rel="icon" type="image/svg+xml" href="/public/favicon-clarivue/favicon.svg">
+        <link rel="shortcut icon" href="/public/favicon-clarivue/favicon.ico">
+        <meta name="msapplication-config" content="/public/favicon-clarivue/browserconfig.xml">
+        
+        <!-- Performance Optimizations -->
+        <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+        <script src="https://cdn.tailwindcss.com" defer></script>
+        <style type="text/tailwindcss">
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+
+            @layer base {
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 400;
+                    font-style: normal;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Regular.woff2') format('woff2');
+                }
+
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 500;
+                    font-style: normal;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Medium.woff2') format('woff2');
+                }
+
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 600;
+                    font-style: normal;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2');
+                }
+
+                @font-face {
+                    font-family: 'Plus Jakarta Sans';
+                    font-weight: 700;
+                    font-style: normal;
+                    src: url('https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Bold.woff2') format('woff2');
+                }
+            }
+        </style>
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        inter: ['Inter'],
+                        pj: ['Plus Jakarta Sans'],
+                    },
+                },
+            }
+        </script>
+    </head>
+    <body class="bg-gradient-to-br from-blue via-blue-50 to-cyan-50">
+        <!-- Header Navigation -->
+        <header class="fixed top-0 left-1/2 z-50 w-full max-w-4xl" style="transform: translateX(-50%);">
+            <div class="mx-auto px-3 sm:px-4">
+                <nav class="mt-2 sm:mt-3 flex items-center justify-between rounded-2xl relative py-2 sm:py-3 overflow-hidden
+                    bg-gradient-to-r from-[#102C65]/90 via-[#1a3875]/95 to-[#102C65]/90
+                    backdrop-blur-xl backdrop-saturate-150
+                    shadow-[0_8px_32px_rgba(0,0,0,0.3),0_4px_16px_rgba(16,44,101,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]
+                    border border-white/10
+                    before:absolute before:inset-0 before:rounded-2xl before:p-[1px]
+                    before:bg-gradient-to-r before:from-white/20 before:via-white/10 before:to-white/20
+                    before:-z-10 before:content-['']
+                    hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),0_6px_20px_rgba(16,44,101,0.5),inset_0_1px_0_rgba(255,255,255,0.3)]
+                    transition-all duration-500 ease-out
+                    group">
+                    
+                    <!-- Brand Logo -->
+                    <div class="flex items-center pl-3 sm:pl-4 relative z-10">
+                        <a href="home.html">
+                            <img src="/public/clarivue-logo-dark.png" alt="Clarivue" 
+                                class="h-8 w-auto drop-shadow-[0_2px_8px_rgba(255,255,255,0.1)] hover:drop-shadow-[0_4px_12px_rgba(255,255,255,0.2)] transition-all duration-300" loading="eager" decoding="async" />
+                        </a>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="hidden lg:flex items-center gap-1 relative z-10">
+                        <a href="home.html" class="group relative px-3 py-2 text-sm font-medium text-zinc-200 hover:text-white tracking-tight rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0FF]/40 transition-all duration-300">
+                            <span class="absolute inset-0 -z-10 rounded-lg bg-white/0 group-hover:bg-white/[0.12] group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300"></span>
+                            <span class="relative z-10 group-hover:drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Home</span>
+                        </a>
+                        <a href="about.html" class="group relative px-3 py-2 text-sm font-medium text-zinc-200 hover:text-white tracking-tight rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0FF]/40 transition-all duration-300">
+                            <span class="absolute inset-0 -z-10 rounded-lg bg-white/0 group-hover:bg-white/[0.12] group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300"></span>
+                            <span class="relative z-10 group-hover:drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">About</span>
+                        </a>
+                        <a href="faq.html" class="group relative px-3 py-2 text-sm font-medium text-zinc-200 hover:text-white tracking-tight rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0FF]/40 transition-all duration-300">
+                            <span class="absolute inset-0 -z-10 rounded-lg bg-white/0 group-hover:bg-white/[0.12] group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300"></span>
+                            <span class="relative z-10 group-hover:drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">FAQ</span>
+                        </a>
+                        <a href="privacy.html" class="group relative px-3 py-2 text-sm font-medium text-zinc-200 hover:text-white tracking-tight rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0FF]/40 transition-all duration-300">
+                            <span class="absolute inset-0 -z-10 rounded-lg bg-white/0 group-hover:bg-white/[0.12] group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300"></span>
+                            <span class="relative z-10 group-hover:drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Privacy</span>
+                        </a>
+                        <a href="terms.html" class="group relative px-3 py-2 text-sm font-medium text-zinc-200 hover:text-white tracking-tight rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0FF]/40 transition-all duration-300">
+                            <span class="absolute inset-0 -z-10 rounded-lg bg-white/0 group-hover:bg-white/[0.12] group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300"></span>
+                            <span class="relative z-10 group-hover:drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Terms</span>
+                        </a>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex items-center gap-1 pr-2 sm:pr-3 relative z-10">
+                        <a href="home.html" class="hidden lg:inline-flex items-center gap-2 rounded-lg 
+                            bg-gradient-to-b from-[#FF676D] to-[#e5585e]
+                            text-white px-3.5 py-2 text-sm font-semibold tracking-tight 
+                            hover:from-[#e5585e] hover:to-[#cc4a50]
+                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0FF]/40
+                            shadow-[0_2px_8px_rgba(255,103,109,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]
+                            hover:shadow-[0_4px_12px_rgba(255,103,109,0.4),inset_0_1px_0_rgba(255,255,255,0.3)]
+                            transition-all duration-300 active:scale-98">
+                            <span class="drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]">Home</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <section class="py-8 bg-gradient-to-br from-blue via-blue-50 to-cyan-50 sm:py-12 lg:py-16" style="padding-top: calc(6rem + 5vh);">
+            <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-2xl">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center px-6 py-3 rounded-full bg-[#FF676D]/20 border border-[#FF676D]/30 mb-6">
+                        <p class="text-sm font-semibold tracking-widest text-[#FF676D] uppercase font-pj">Get Started</p>
+                    </div>
+                    <h1 class="text-3xl font-bold tracking-tight text-[#102C65] sm:text-4xl lg:text-5xl font-pj">Start Your Journey with Clarivue AI</h1>
+                    <p class="mt-4 text-lg text-[#102C65]/80 font-pj">Tell us about yourself and we'll get you set up with our interview intelligence platform.</p>
+                </div>
+
+                <!-- Get Started Form -->
+                <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20">
+                    <div id="form-container">
+                        <form id="getStartedForm" action="https://formspree.io/f/xjkakbpr" method="POST" class="space-y-6">
+                            <!-- Name Field -->
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-[#102C65] mb-2 font-pj">Full Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF676D] focus:border-[#FF676D] outline-none transition-colors font-pj"
+                                    placeholder="Enter your full name"
+                                />
+                            </div>
+
+                            <!-- Work Email Field -->
+                            <div>
+                                <label for="work_email" class="block text-sm font-semibold text-[#102C65] mb-2 font-pj">Work Email *</label>
+                                <input 
+                                    type="email" 
+                                    id="work_email" 
+                                    name="work_email" 
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF676D] focus:border-[#FF676D] outline-none transition-colors font-pj"
+                                    placeholder="Enter your work email"
+                                />
+                                <p class="mt-1 text-xs text-[#102C65]/60 font-pj">Please use your company email address</p>
+                            </div>
+
+                            <!-- Role Field -->
+                            <div>
+                                <label for="role" class="block text-sm font-semibold text-[#102C65] mb-2 font-pj">Role/Job Title *</label>
+                                <input 
+                                    type="text" 
+                                    id="role" 
+                                    name="role" 
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF676D] focus:border-[#FF676D] outline-none transition-colors font-pj"
+                                    placeholder="e.g., Hiring Manager, HR Director"
+                                />
+                            </div>
+
+                            <!-- Company Name Field -->
+                            <div>
+                                <label for="company" class="block text-sm font-semibold text-[#102C65] mb-2 font-pj">Company Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="company" 
+                                    name="company" 
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF676D] focus:border-[#FF676D] outline-none transition-colors font-pj"
+                                    placeholder="Enter your company name"
+                                />
+                            </div>
+
+                            <!-- Industry Field -->
+                            <div>
+                                <label for="industry" class="block text-sm font-semibold text-[#102C65] mb-2 font-pj">Industry *</label>
+                                <select 
+                                    id="industry" 
+                                    name="industry" 
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF676D] focus:border-[#FF676D] outline-none transition-colors font-pj bg-white"
+                                >
+                                    <option value="">Select your industry</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="Financial Services">Financial Services</option>
+                                    <option value="Manufacturing">Manufacturing</option>
+                                    <option value="Retail">Retail</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Consulting">Consulting</option>
+                                    <option value="Media & Entertainment">Media & Entertainment</option>
+                                    <option value="Real Estate">Real Estate</option>
+                                    <option value="Government">Government</option>
+                                    <option value="Non-profit">Non-profit</option>
+                                    <option value="Staffing & Recruiting">Staffing & Recruiting</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-4">
+                                <button 
+                                    type="submit" 
+                                    class="w-full px-6 py-4 bg-gradient-to-r from-[#FF676D] to-[#e5585e] text-white font-semibold rounded-lg hover:from-[#e5585e] hover:to-[#cc4a50] focus:outline-none focus:ring-2 focus:ring-[#FF676D] focus:ring-offset-2 transition-all duration-300 font-pj shadow-lg"
+                                >
+                                    Get Started with Clarivue AI
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="success-message" class="hidden text-center space-y-4">
+                        <div class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-[#102C65] font-pj">Thank you for your interest!</h3>
+                        <p class="text-[#102C65]/80 font-pj max-w-md mx-auto">
+                            Thanks for indicating interest in signing up for Clarivue AI. One of our onboarding specialists will contact you with next steps within 24 hours.
+                        </p>
+                        <div class="pt-4">
+                            <a href="home.html" class="inline-flex items-center px-6 py-3 bg-[#102C65] text-white font-medium rounded-lg hover:bg-[#102C65]/90 transition-colors font-pj">
+                                Return to Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 bg-[#102C65] sm:py-10 lg:py-12 border-t border-gray-600">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="md:flex md:items-center md:justify-between">
+                    <div class="flex items-center gap-4">
+                        <img src="/public/clarivue-logo-dark.png" alt="Clarivue" class="h-8 w-auto" />
+                        <span class="text-base font-normal text-white font-pj">© Clarivue. All rights reserved.</span>
+                    </div>
+
+                    <div class="mt-4 md:mt-0">
+                        <ul class="flex items-center space-x-4 sm:space-x-8">
+                            <li>
+                                <a href="about.html" title="About Clarivue" class="text-base font-medium text-white transition-all duration-200 font-pj hover:text-gray-300">About</a>
+                            </li>
+                            <li>
+                                <a href="home.html" title="Home" class="text-base font-medium text-white transition-all duration-200 font-pj hover:text-gray-300">Home</a>
+                            </li>
+                            <li>
+                                <a href="faq.html" title="FAQ" class="text-base font-medium text-white transition-all duration-200 font-pj hover:text-gray-300">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="privacy.html" title="Privacy Policy" class="text-base font-medium text-white transition-all duration-200 font-pj hover:text-gray-300">Privacy</a>
+                            </li>
+                            <li>
+                                <a href="terms.html" title="Terms of Service" class="text-base font-medium text-white transition-all duration-200 font-pj hover:text-gray-300">Terms</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Email validation for work email
+            function isWorkEmail(email) {
+                const personalDomains = [
+                    'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 
+                    'aol.com', 'icloud.com', 'protonmail.com', 'mail.com'
+                ];
+                const domain = email.split('@')[1];
+                return domain && !personalDomains.includes(domain.toLowerCase());
+            }
+
+            // Form submission handler
+            document.getElementById('getStartedForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const workEmail = document.getElementById('work_email').value;
+                
+                // Validate work email
+                if (!isWorkEmail(workEmail)) {
+                    alert('Please use a work email address (not personal email like Gmail, Yahoo, etc.)');
+                    return;
+                }
+
+                // Submit form
+                const formData = new FormData(this);
+                
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // Show success message
+                        document.getElementById('form-container').classList.add('hidden');
+                        document.getElementById('success-message').classList.remove('hidden');
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                }).catch(error => {
+                    alert('Sorry, there was an error submitting your information. Please try again.');
+                    console.error('Error:', error);
+                });
+            });
+        </script>
+    </body>
+</html>
