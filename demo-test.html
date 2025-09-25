@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Form Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-8 bg-gray-100">
+    <h1 class="text-2xl font-bold mb-4">Demo Form Test</h1>
+    
+    <div id="demo-form-container" class="mb-4">
+        <form id="demoForm" action="https://formspree.io/f/xjkakbpr" method="POST" class="space-y-4">
+            <label for="demo-email" class="block text-sm font-medium">Email:</label>
+            <input
+                type="email"
+                name="email"
+                id="demo-email"
+                placeholder="Enter your work email"
+                required
+                class="block w-full px-4 py-2 border border-gray-300 rounded-md"
+            />
+            <button
+                type="submit"
+                id="demo-submit-btn"
+                class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            >
+                <span class="button-text">Book Demo</span>
+                <svg class="button-spinner hidden animate-spin ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </button>
+        </form>
+    </div>
+    
+    <div id="demo-success-message" class="hidden p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+        <h3 class="font-bold">Success!</h3>
+        <p>Demo request submitted successfully!</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoForm = document.getElementById('demoForm');
+            const demoFormContainer = document.getElementById('demo-form-container');
+            const demoSuccessMessage = document.getElementById('demo-success-message');
+            
+            console.log('Elements found:', {
+                form: !!demoForm,
+                container: !!demoFormContainer,
+                success: !!demoSuccessMessage
+            });
+            
+            if (demoForm && demoFormContainer && demoSuccessMessage) {
+                const demoSubmitBtn = document.getElementById('demo-submit-btn');
+                const demoButtonText = demoSubmitBtn.querySelector('.button-text');
+                const demoButtonSpinner = demoSubmitBtn.querySelector('.button-spinner');
+
+                demoForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Form submitted!');
+                    
+                    // Show loading state
+                    demoButtonText.textContent = 'Booking...';
+                    demoButtonSpinner.classList.remove('hidden');
+                    demoSubmitBtn.disabled = true;
+
+                    // Submit form
+                    const formData = new FormData(this);
+                    
+                    fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        console.log('Response:', response);
+                        if (response.ok) {
+                            // Show success message
+                            demoFormContainer.classList.add('hidden');
+                            demoSuccessMessage.classList.remove('hidden');
+                        } else {
+                            throw new Error('Network response was not ok');
+                        }
+                    }).catch(error => {
+                        console.error('Error:', error);
+                        alert('Sorry, there was an error booking your demo. Please try again.');
+                        
+                        // Reset button state
+                        demoButtonText.textContent = 'Book Demo';
+                        demoButtonSpinner.classList.add('hidden');
+                        demoSubmitBtn.disabled = false;
+                    });
+                });
+            } else {
+                console.log('Missing elements!');
+            }
+        });
+    </script>
+</body>
+</html>

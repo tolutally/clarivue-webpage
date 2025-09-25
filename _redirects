@@ -1,0 +1,7 @@
+# Netlify redirects file
+# Support page redirect
+/support /faq.html 301
+/support/ /faq.html 301
+
+# You can add other redirects here in the future
+# /old-page /new-page 301
