@@ -1,24 +1,22 @@
 {
-  "routes": [
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
     {
-      "src": "/about",
-      "dest": "/about.html"
+      "source": "/faq",
+      "destination": "/faq.html"
     },
     {
-      "src": "/faq", 
-      "dest": "/faq.html"
+      "source": "/getstarted",
+      "destination": "/getstarted.html"
     },
     {
-      "src": "/getstarted",
-      "dest": "/getstarted.html"
+      "source": "/privacy",
+      "destination": "/privacy.html"
     },
     {
-      "src": "/privacy",
-      "dest": "/privacy.html"
-    },
-    {
-      "src": "/terms",
-      "dest": "/terms.html"
+      "source": "/terms",
+      "destination": "/terms.html"
     }
   ]
 }

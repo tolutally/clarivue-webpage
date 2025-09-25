@@ -1059,11 +1059,27 @@
                 });
             }
 
+            // Ensure page loads at top
+            if (history.scrollRestoration) {
+                history.scrollRestoration = 'manual';
+            }
+            
+            // Force scroll to top immediately
+            window.scrollTo(0, 0);
+            
             // Initialize on DOM load
             document.addEventListener('DOMContentLoaded', function() {
+                // Ensure page starts at top
+                window.scrollTo(0, 0);
+                
                 optimizeMobileInput();
                 initMobileScrollOptimization();
                 initMobileNav();
+            });
+            
+            // Handle page show event (back/forward navigation)
+            window.addEventListener('pageshow', function(event) {
+                window.scrollTo(0, 0);
             });
             
             // Preload critical images and setup lazy loading

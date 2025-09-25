@@ -1047,11 +1047,27 @@
                 });
             }
 
+            // Ensure page loads at top
+            if (history.scrollRestoration) {
+                history.scrollRestoration = 'manual';
+            }
+            
+            // Force scroll to top immediately
+            window.scrollTo(0, 0);
+            
             // Initialize on DOM load
             document.addEventListener('DOMContentLoaded', function() {
+                // Ensure page starts at top
+                window.scrollTo(0, 0);
+                
                 optimizeMobileInput();
                 initMobileScrollOptimization();
                 initMobileNav();
+            });
+            
+            // Handle page show event (back/forward navigation)
+            window.addEventListener('pageshow', function(event) {
+                window.scrollTo(0, 0);
             });
             
             // Preload critical images and setup lazy loading
@@ -2782,7 +2798,7 @@
                                         <!-- Enhanced avatar with ring animation -->
                                         <div class="relative">
                                             <div class="absolute inset-0 rounded-full bg-gradient-to-r from-[#C9A0FF] to-[#FF676D] opacity-75 animate-pulse"></div>
-                                            <img class="relative flex-shrink-0 object-cover rounded-full w-12 h-12 ring-2 ring-white/20 transform transition-transform duration-500 group-hover:scale-110" src="public/priya-shah.png" alt="Priya Shah" />
+                                            <img class="relative flex-shrink-0 object-cover rounded-full w-12 h-12 ring-2 ring-white/20 transform transition-transform duration-500 group-hover:scale-110" src="/priya-shah.png" alt="Priya Shah" />
                                         </div>
                                         <div class="ml-4">
                                             <p class="text-base font-bold text-white font-pj transform transition-all duration-300 group-hover:text-[#C9A0FF]">Priya Shah</p>
@@ -2877,7 +2893,7 @@
                     </div>
 
                     <div class="lg:order-1">
-                        <img class="w-full max-w-sm mx-auto" src="public/newsletter-image.png" alt="" />
+                        <img class="w-full max-w-sm mx-auto" src="/newsletter-image.png" alt="" />
                     </div>
                 </div>
             </div>

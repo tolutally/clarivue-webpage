@@ -186,64 +186,6 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(200,160,254,0.25);
         }
-        
-        /* Enhanced card borders */
-        .card-border {
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
-        }
-        
-        .card-border:hover {
-            border-color: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Mobile Responsive Improvements */
-        @media (max-width: 768px) {
-            .container {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            
-            header h1 {
-                font-size: 2.5rem !important;
-                line-height: 1.1 !important;
-            }
-            
-            header p {
-                font-size: 1.125rem !important;
-                line-height: 1.5 !important;
-            }
-            
-            .bento-grid {
-                grid-template-columns: 1fr !important;
-                gap: 1rem !important;
-            }
-            
-            .mission-card {
-                padding: 1.5rem !important;
-            }
-            
-            .small-card {
-                padding: 1.5rem !important;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            header {
-                padding-top: 4rem !important;
-                margin-bottom: 2rem !important;
-            }
-            
-            header h1 {
-                font-size: 2rem !important;
-                margin-bottom: 1rem !important;
-            }
-            
-            header p {
-                font-size: 1rem !important;
-            }
-        }
     </style>
 </head>
 <body class="bg-cv-bg font-inter text-cv-ink overflow-x-hidden">
@@ -324,29 +266,29 @@
         <!-- Main Content -->
         <div class="relative z-10 container mx-auto px-4 py-12 min-h-screen flex flex-col">
             <!-- Header -->
-            <header class="mb-16 pt-20 animate-fade-in text-center">
-                <div class="max-w-5xl mx-auto">
-                    <h1 class="font-manrope text-4xl md:text-6xl lg:text-7xl leading-tight font-light tracking-normal mb-8 text-cv-ink">
-                        About Clarivue
+            <header class="mb-12 pt-20 animate-fade-in">
+                <div class="max-w-4xl">
+                    <h1 class="font-manrope text-4xl md:text-6xl lg:text-7xl leading-tight font-light tracking-normal mb-6">
+                        About Us
                     </h1>
-                    <p class="font-inter text-xl md:text-2xl text-cv-ink/80 max-w-3xl mx-auto leading-relaxed">
+                    <p class="font-inter text-lg md:text-xl text-cv-ink/70 max-w-2xl leading-relaxed">
                         We are building Clarivue AI to change how interviews are run and decisions are made. Our team cares about one thing: making hiring faster, fairer, and backed by evidence.
                     </p>
                 </div>
             </header>
 
             <!-- Bento Grid Layout -->
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 flex-grow animate-slide-up">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-grow animate-slide-up">
                 <!-- Mission - Large Card -->
-                <div class="md:col-span-2 md:row-span-2 bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 flex flex-col shadow-card card-hover-effect card-border">
-                    <h2 class="font-manrope text-3xl md:text-4xl font-light mb-8 text-cv-primary text-center md:text-left">Our Mission</h2>
-                    <div class="space-y-6 text-cv-ink/80 flex-grow text-center md:text-left">
-                        <p class="text-lg md:text-xl font-medium text-cv-ink leading-relaxed">We believe interviews decide futures, and they deserve more than gut feeling. Clarivue was created to give hiring teams and agencies structure, data, and speed without losing the human touch.</p>
+                <div class="md:col-span-2 md:row-span-2 bg-white/5 backdrop-blur-lg rounded-2xl p-8 flex flex-col shadow-card card-hover-effect border border-white/10">
+                    <h2 class="font-manrope text-3xl md:text-4xl font-light mb-6 text-cv-primary">Our Mission</h2>
+                    <div class="space-y-6 text-cv-ink/80 flex-grow">
+                        <p class="text-lg font-medium text-cv-ink">We believe interviews decide futures, and they deserve more than gut feeling. Clarivue was created to give hiring teams and agencies structure, data, and speed without losing the human touch.</p>
                     </div>
                     
                     <!-- CTA Button -->
-                    <div class="mt-8 pt-6 border-t border-white/10 text-center md:text-left">
-                        <a href="/#demo" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-base font-medium transition-all bg-gradient-to-r from-cv-primary to-cv-primaryLight text-cv-bg hover:opacity-90 hover:scale-[1.02] shadow-lg">
+                    <div class="mt-8 pt-6 border-t border-white/10">
+                        <a href="home.html#demo" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-sm font-medium transition-all bg-gradient-to-r from-cv-primary to-cv-primaryLight text-cv-bg hover:opacity-90 hover:scale-[1.02] shadow-lg">
                             See how it works
                             <svg width="16" height="16" fill="currentColor" class="opacity-90">
                                 <path d="M3 8h8.586L8.293 4.707l1.414-1.414L15.414 9l-5.707 5.707-1.414-1.414L11.586 10H3z"/>
@@ -356,69 +298,69 @@
                 </div>
 
                 <!-- How We Work -->
-                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 md:p-8 card-hover-effect card-border text-center transition-all duration-300">
-                    <h3 class="font-manrope text-xl md:text-2xl font-light mb-6 text-cv-primary">How We Work</h3>
-                    <p class="font-inter text-base text-cv-ink/80 leading-relaxed">
+                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 card-hover-effect border border-white/10">
+                    <h3 class="font-manrope text-xl font-light mb-4 text-cv-primary">How We Work</h3>
+                    <p class="font-inter text-sm text-cv-ink/80 leading-relaxed">
                         We blend AI guidance with practical workflows. The result is interviews that stay on track, scorecards that complete themselves, and decisions that land in inboxes with proof attached.
                     </p>
                 </div>
 
                 <!-- Our Values -->
-                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 md:p-8 card-hover-effect card-border text-center transition-all duration-300">
-                    <h3 class="font-manrope text-xl md:text-2xl font-light mb-6 text-cv-primary">Our Values</h3>
-                    <p class="font-inter text-base text-cv-ink/80 leading-relaxed">
+                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 card-hover-effect border border-white/10">
+                    <h3 class="font-manrope text-xl font-light mb-4 text-cv-primary">Our Values</h3>
+                    <p class="font-inter text-sm text-cv-ink/80 leading-relaxed">
                         Fair interviews. Less bias. Faster yes or no. Transparency for teams and candidates alike.
                     </p>
                 </div>
 
                 <!-- Our Team -->
-                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 md:p-8 card-hover-effect card-border text-center transition-all duration-300">
-                    <h3 class="font-manrope text-xl md:text-2xl font-light mb-6 text-cv-primary">Our Team</h3>
-                    <p class="font-inter text-base text-cv-ink/80 leading-relaxed">
+                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 card-hover-effect border border-white/10">
+                    <h3 class="font-manrope text-xl font-light mb-4 text-cv-primary">Our Team</h3>
+                    <p class="font-inter text-sm text-cv-ink/80 leading-relaxed">
                         Recruiters, technologists, and builders working side by side. We know the pain of messy interviews, and we're here to fix it.
                     </p>
                 </div>
 
                 <!-- Our Process -->
-                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 md:p-8 card-hover-effect card-border text-center transition-all duration-300">
-                    <h3 class="font-manrope text-xl md:text-2xl font-light mb-6 text-cv-primary">Our Process</h3>
-                    <p class="font-inter text-base text-cv-ink/80 leading-relaxed">
+                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 card-hover-effect border border-white/10">
+                    <h3 class="font-manrope text-xl font-light mb-4 text-cv-primary">Our Process</h3>
+                    <p class="font-inter text-sm text-cv-ink/80 leading-relaxed">
                         Listen first, then build. Every feature is tested with hiring managers, recruiters, and students to ensure it solves a real pain point before it ships.
                     </p>
                 </div>
 
                 <!-- Our Clients -->
-                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 md:p-8 card-hover-effect card-border text-center transition-all duration-300">
-                    <h3 class="font-manrope text-xl md:text-2xl font-light mb-6 text-cv-primary">Our Clients</h3>
-                    <p class="font-inter text-base text-cv-ink/80 leading-relaxed">
+                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 card-hover-effect border border-white/10">
+                    <h3 class="font-manrope text-xl font-light mb-4 text-cv-primary">Our Clients</h3>
+                    <p class="font-inter text-sm text-cv-ink/80 leading-relaxed">
                         From startups to staffing agencies to career offices, we work with teams that want to move faster without losing quality.
                     </p>
                 </div>
 
                 <!-- Bottom Centered Cards -->
-                <div class="md:col-start-1 md:col-end-2 bg-white/5 backdrop-blur-lg rounded-2xl p-6 md:p-8 card-hover-effect card-border text-center transition-all duration-300">
-                    <h3 class="font-manrope text-xl md:text-2xl font-light mb-6 text-cv-primary">Our Impact</h3>
-                    <p class="font-inter text-base text-cv-ink/80 leading-relaxed">
+                <div class="md:col-start-1 md:col-end-2 bg-white/5 backdrop-blur-lg rounded-2xl p-6 card-hover-effect border border-white/10">
+                    <h3 class="font-manrope text-xl font-light mb-4 text-cv-primary">Our Impact</h3>
+                    <p class="font-inter text-sm text-cv-ink/80 leading-relaxed">
                         We cut wasted hours, reduce manual admin, and give teams the confidence to make hiring decisions backed by data.
                     </p>
                 </div>
 
-                <div class="md:col-start-3 md:col-end-4 bg-white/5 backdrop-blur-lg rounded-2xl p-6 md:p-8 card-hover-effect card-border text-center transition-all duration-300">
-                    <h3 class="font-manrope text-xl md:text-2xl font-light mb-6 text-cv-primary">Our Vision</h3>
-                    <p class="font-inter text-base text-cv-ink/80 leading-relaxed">
+                <div class="md:col-start-3 md:col-end-4 bg-white/5 backdrop-blur-lg rounded-2xl p-6 card-hover-effect border border-white/10">
+                    <h3 class="font-manrope text-xl font-light mb-4 text-cv-primary">Our Vision</h3>
+                    <p class="font-inter text-sm text-cv-ink/80 leading-relaxed">
                         A hiring world where every interview is structured, every decision is clear, and talent moves forward without delays.
                     </p>
                 </div>
             </div>
 
             <!-- Footer -->
-            <footer class="mt-20 pt-8 border-t border-white/10">
-                <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <footer class="mt-16 pt-8 border-t border-white/10">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div class="flex items-center gap-3">
                         <img src="/clarivue-icon.png" alt="Clarivue" class="h-6 w-6 opacity-70" loading="lazy" decoding="async">
                         <span class="text-sm text-cv-ink/50">© 2024 Clarivue. All rights reserved.</span>
                     </div>
-                    <a href="/" class="text-sm text-cv-primary hover:text-cv-primaryLight transition-colors font-medium">
+                    <a href="/" class="text-sm text-cv-primary hover:text-cv-primaryLight transition-colors">
                         ← Back to Home
                     </a>
                 </div>
