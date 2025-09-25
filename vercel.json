@@ -1,17 +1,6 @@
 {
   "version": 2,
   "name": "clarivue-website",
-  "builds": [
-    {
-      "src": "**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "functions": {
-    "**/*.html": {
-      "maxDuration": 10
-    }
-  },
   "routes": [
     {
       "src": "^/$",
