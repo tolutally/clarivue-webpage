@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://clarivue.io/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow sensitive files
+Disallow: /demo-test.html
+Disallow: *.json
+Disallow: /vercel.json
+
+# Allow important directories
+Allow: /favicon-clarivue/
+Allow: /*.png
+Allow: /*.svg
+Allow: /*.jpg
+Allow: /*.gif

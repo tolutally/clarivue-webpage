@@ -21,6 +21,10 @@
     {
       "source": "/support",
       "destination": "/support.html"
+    },
+    {
+      "source": "/sitemap",
+      "destination": "/sitemap.html"
     }
   ]
 }

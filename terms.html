@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-5CJ7WDQC');</script>
+        <!-- End Google Tag Manager -->
+        
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Terms of Service - Interview Software Agreement | Clarivue</title>
@@ -170,6 +174,10 @@
         </script>
     </head>
     <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CJ7WDQC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
         <!-- Loading Screen -->
         <div id="page-loader" class="page-loading">
             <div class="text-center">
@@ -234,12 +242,81 @@
                                 shadow-[0_2px_8px_rgba(255,103,109,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]
                                 hover:shadow-[0_4px_12px_rgba(255,103,109,0.4),inset_0_1px_0_rgba(255,255,255,0.3)]
                                 transition-all duration-300 active:scale-98">
-                                <span class="drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]">Get Started</span>
+                                <span class="drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]">Start for free</span>
                             </a>
+                            
+                            <!-- Mobile Menu Button -->
+                            <button 
+                                id="mobile-menu-button"
+                                class="lg:hidden inline-flex items-center justify-center rounded-md p-2.5 
+                                       text-gray-400 hover:bg-gray-100 hover:text-gray-500 
+                                       focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                                aria-controls="mobile-menu" 
+                                aria-expanded="false">
+                                <span class="sr-only">Open main menu</span>
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                            </button>
                         </div>
                     </nav>
                 </div>
             </header>
+
+            <!-- Mobile menu, show/hide based on menu state -->
+            <div id="mobile-menu" class="lg:hidden hidden fixed inset-0 z-40">
+                <!-- Backdrop -->
+                <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
+                
+                <!-- Menu panel -->
+                <div class="fixed inset-y-0 right-0 max-w-full flex">
+                    <div class="w-screen max-w-sm">
+                        <div class="h-full flex flex-col bg-white shadow-xl">
+                            <!-- Header -->
+                            <div class="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200">
+                                <div class="flex items-center gap-3">
+                                    <img class="h-8 w-auto" src="clarivue-logo.png" alt="Clarivue">
+                                    <span class="text-xl font-bold text-gray-900">Clarivue</span>
+                                </div>
+                                <button 
+                                    id="mobile-menu-close"
+                                    class="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <span class="sr-only">Close menu</span>
+                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Navigation -->
+                            <div class="flex-1 px-6 py-6">
+                                <nav class="space-y-6">
+                                    <a href="/" class="block text-base font-medium text-gray-900 hover:text-indigo-600">Home</a>
+                                    <a href="/about" class="block text-base font-medium text-gray-900 hover:text-indigo-600">About</a>
+                                    <a href="/faq" class="block text-base font-medium text-gray-900 hover:text-indigo-600">FAQ</a>
+                                    <a href="/privacy" class="block text-base font-medium text-gray-900 hover:text-indigo-600">Privacy</a>
+                                    <a href="/terms" class="block text-base font-medium text-gray-600 cursor-default">Terms</a>
+                                </nav>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <div class="px-6 py-6 border-t border-gray-200">
+                                <a href="/" 
+                                   class="w-full flex items-center justify-center gap-2 rounded-lg 
+                                          bg-gradient-to-b from-[#FF676D] to-[#e5585e]
+                                          text-white px-4 py-3 text-base font-semibold tracking-tight 
+                                          hover:from-[#e5585e] hover:to-[#cc4a50]
+                                          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0FF]/40
+                                          shadow-[0_2px_8px_rgba(255,103,109,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]
+                                          hover:shadow-[0_4px_12px_rgba(255,103,109,0.4),inset_0_1px_0_rgba(255,255,255,0.3)]
+                                          transition-all duration-300">
+                                    <span class="drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]">Start for free</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Terms of Service Section -->
             <section class="py-8 bg-gradient-to-br from-blue via-blue-50 to-cyan-50 sm:py-12 lg:py-16" style="padding-top: calc(6rem + 5vh);">
@@ -534,6 +611,41 @@
                     loader.style.opacity = '1';
                 }
             });
+
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+            if (mobileMenuButton && mobileMenu && mobileMenuClose) {
+                // Open mobile menu
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                });
+
+                // Close mobile menu
+                function closeMobileMenu() {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+                // Close menu when clicking backdrop
+                mobileMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileMenu || e.target.classList.contains('bg-black')) {
+                        closeMobileMenu();
+                    }
+                });
+
+                // Close menu on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu();
+                    }
+                });
+            }
         </script>
     </body>
 </html>
