@@ -81,6 +81,46 @@
                 transform: translateY(0);
             }
         }
+        
+        /* Mobile Optimization for FAQ */
+        @media (max-width: 768px) {
+            .faq-mobile-heading {
+                font-size: 1.75rem !important;
+                line-height: 1.2 !important;
+                text-align: center;
+                padding: 0 1rem;
+            }
+            .faq-mobile-text {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+                padding: 0 1rem;
+            }
+            .faq-mobile-section {
+                padding: 2rem 1rem !important;
+            }
+            .faq-accordion {
+                margin: 0.75rem 0;
+                border-radius: 12px;
+            }
+            .faq-accordion-button {
+                padding: 1.25rem 1rem;
+                font-size: 1rem;
+                text-align: left;
+            }
+            .faq-accordion-content {
+                padding: 1rem;
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            .mobile-contact-card {
+                margin: 2rem 1rem;
+                padding: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
         </style>
         
         <!-- Performance Optimizations -->

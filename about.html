@@ -80,6 +80,37 @@
                 transform: translateY(0);
             }
         }
+        
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .mobile-heading {
+                font-size: 1.875rem !important;
+                line-height: 1.2 !important;
+                text-align: center;
+                padding: 0 1rem;
+            }
+            .mobile-text {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+                padding: 0 1rem;
+            }
+            .mobile-section {
+                padding: 2rem 1rem !important;
+            }
+            .mobile-card {
+                margin: 1rem 0;
+                padding: 1.5rem 1rem;
+            }
+            .mobile-nav-toggle {
+                display: block !important;
+            }
+            .mobile-nav-hide {
+                display: none !important;
+            }
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
         </style>    <!-- Performance Optimizations -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
