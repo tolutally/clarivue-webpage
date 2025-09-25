@@ -1,44 +1,19 @@
 {
   "version": 2,
   "name": "clarivue-website",
-  "routes": [
-    {
-      "src": "^/$",
-      "dest": "/home.html"
-    },
-    {
-      "src": "^/home/?$",
-      "dest": "/home.html"
-    },
-    {
-      "src": "^/about/?$", 
-      "dest": "/about.html"
-    },
-    {
-      "src": "^/faq/?$",
-      "dest": "/faq.html"
-    },
-    {
-      "src": "^/privacy/?$",
-      "dest": "/privacy.html"
-    },
-    {
-      "src": "^/terms/?$",
-      "dest": "/terms.html"
-    },
-    {
-      "src": "^/get-started/?$",
-      "dest": "/getstarted.html"
-    },
-    {
-      "src": "^/index.html$",
-      "status": 301,
-      "headers": { "Location": "/" }
-    },
-    {
-      "src": "^/(.*)",
-      "dest": "/$1"
-    }
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/home.html" },
+    { "source": "/home", "destination": "/home.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/get-started", "destination": "/getstarted.html" }
   ],
   "headers": [
     {
