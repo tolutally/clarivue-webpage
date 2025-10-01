@@ -327,6 +327,43 @@
             .mobile-compact-spacing > * + * {
                 margin-top: 1rem !important;
             }
+            
+            /* Enhanced mobile navigation */
+            .mobile-nav-panel {
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            
+            .mobile-nav-link {
+                min-height: 56px;
+                display: flex;
+                align-items: center;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+            
+            .mobile-nav-link:active {
+                background-color: #f3f4f6;
+                transform: scale(0.98);
+                transition: all 0.1s ease;
+            }
+            
+            /* Mobile hamburger menu */
+            .mobile-menu-btn {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+            
+            .mobile-menu-btn:active {
+                transform: scale(0.95);
+                background-color: #f3f4f6;
+            }
+            
+            /* Mobile touch optimization */
+            .mobile-touch-target {
+                min-height: 48px;
+                min-width: 48px;
+            }
         }
         
         /* Enhanced focus states */
@@ -351,6 +388,60 @@
             
             .mobile-optimize-scroll {
                 overflow-x: hidden;
+            }
+        }
+        
+        /* How it works section image alignment */
+        @media (min-width: 768px) {
+            .interview-content {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .interview-content img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 0.75rem;
+            }
+            
+            /* Ensure UI overlays don't overflow container */
+            .interview-content > div:last-child {
+                max-width: calc(100% - 2rem);
+            }
+        }
+        
+        /* Desktop adjustments for how it works tabs */
+        @media (min-width: 1024px) {
+            .interview-content img {
+                object-position: center center;
+            }
+            
+            /* Plan tab overlay positioning */
+            .interview-content[data-content="plan"] > div:last-child {
+                max-width: 18rem;
+            }
+            
+            /* Interview tab overlay positioning */
+            .interview-content[data-content="interview"] > div:last-child {
+                max-width: 18rem;
+            }
+            
+            /* Decide tab overlay positioning */
+            .interview-content[data-content="decide"] > div:last-child {
+                max-width: 18rem;
+            }
+        }
+        
+        /* Extra large screens */
+        @media (min-width: 1280px) {
+            .interview-content[data-content="plan"] > div:last-child,
+            .interview-content[data-content="interview"] > div:last-child,
+            .interview-content[data-content="decide"] > div:last-child {
+                max-width: 20rem;
             }
         }
         </style>
@@ -698,21 +789,137 @@
                     }
                 }
                 
-                @media (max-width: 380px) {
-                    /* Extra small devices */
+                /* Additional mobile optimizations */
+                @media (max-width: 640px) {
+                    /* Improved touch targets for mobile */
+                    .mobile-touch-target {
+                        min-height: 48px;
+                        min-width: 48px;
+                    }
+                    
+                    /* Better mobile form spacing */
+                    .mobile-form-container {
+                        padding: 16px;
+                        margin: 0 16px;
+                    }
+                    
+                    .mobile-form-stack {
+                        gap: 12px;
+                    }
+                    
+                    /* Optimized mobile input */
+                    .mobile-input {
+                        font-size: 16px !important; /* Prevents zoom on iOS */
+                        padding: 16px 20px;
+                        border-radius: 12px;
+                    }
+                    
+                    /* Better mobile button sizing */
+                    .mobile-button {
+                        padding: 16px 24px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        border-radius: 12px;
+                        min-height: 52px;
+                    }
+                    
+                    /* Improved hero section mobile spacing */
                     .hero-section {
-                        padding-left: 1rem !important;
-                        padding-right: 1rem !important;
+                        padding-top: 100px;
+                        padding-bottom: 60px;
+                        padding-left: 20px;
+                        padding-right: 20px;
                     }
                     
                     .hero-title {
-                        font-size: 1.75rem !important;
+                        font-size: 2rem;
+                        line-height: 1.2;
+                        margin-bottom: 16px;
                     }
                     
+                    .hero-subtitle {
+                        font-size: 1.1rem;
+                        line-height: 1.5;
+                        margin-bottom: 32px;
+                    }
+                    
+                    /* Better mobile pill styling */
+                    .mobile-pill {
+                        padding: 8px 16px;
+                        font-size: 14px;
+                        margin-bottom: 24px;
+                    }
+                    
+                    /* Optimized mobile card spacing */
+                    .mobile-card-grid {
+                        gap: 16px;
+                        padding: 0 16px;
+                    }
+                    
+                    .mobile-card {
+                        padding: 20px;
+                        border-radius: 16px;
+                    }
+                    
+                    /* Better mobile navigation */
+                    .mobile-nav-panel {
+                        width: 280px;
+                    }
+                    
+                    .mobile-nav-link {
+                        padding: 16px 20px;
+                        font-size: 16px;
+                        border-radius: 12px;
+                    }
+                    
+                    /* Improved mobile stats */
                     .mobile-stats {
-                        flex-direction: column !important;
-                        gap: 1rem !important;
-                        text-align: center !important;
+                        flex-direction: column;
+                        gap: 20px;
+                        text-align: center;
+                        margin-top: 40px;
+                    }
+                    
+                    /* Better mobile section spacing */
+                    .mobile-section-padding {
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+                    
+                    /* Optimized mobile scroll */
+                    .mobile-optimize-scroll {
+                        overflow-x: hidden;
+                    }
+                }
+                
+                @media (max-width: 380px) {
+                    /* Extra small devices optimizations */
+                    .hero-section {
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        padding-top: 90px;
+                    }
+                    
+                    .hero-title {
+                        font-size: 1.75rem;
+                    }
+                    
+                    .hero-subtitle {
+                        font-size: 1rem;
+                    }
+                    
+                    .mobile-form-container {
+                        margin: 0 8px;
+                        padding: 12px;
+                    }
+                    
+                    .mobile-input, .mobile-button {
+                        padding: 14px 16px;
+                    }
+                    
+                    .mobile-section-padding {
+                        padding-left: 16px;
+                        padding-right: 16px;
                     }
                 }
                 
@@ -1031,40 +1238,106 @@
                 const mobileCloseBtn = document.getElementById('mobile-close-btn');
                 const mobileBackdrop = document.getElementById('mobile-backdrop');
                 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+                const mobileNavPanel = mobileNav?.querySelector('.mobile-nav-panel');
 
                 function openMobileNav() {
-                    mobileNav.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
+                    if (mobileNav) {
+                        mobileNav.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                        // Add slide-in animation
+                        if (mobileNavPanel) {
+                            mobileNavPanel.style.transform = 'translateX(0)';
+                        }
+                        // Focus management for accessibility
+                        setTimeout(() => {
+                            mobileCloseBtn?.focus();
+                        }, 300);
+                    }
                 }
 
                 function closeMobileNav() {
-                    mobileNav.classList.add('hidden');
-                    document.body.style.overflow = '';
+                    if (mobileNav && mobileNavPanel) {
+                        // Add slide-out animation
+                        mobileNavPanel.style.transform = 'translateX(100%)';
+                        setTimeout(() => {
+                            mobileNav.classList.add('hidden');
+                            document.body.style.overflow = '';
+                            mobileNavPanel.style.transform = 'translateX(0)';
+                            // Return focus to menu button
+                            mobileMenuBtn?.focus();
+                        }, 300);
+                    }
                 }
 
-                // Event listeners
-                mobileMenuBtn?.addEventListener('click', openMobileNav);
-                mobileCloseBtn?.addEventListener('click', closeMobileNav);
-                mobileBackdrop?.addEventListener('click', closeMobileNav);
+                // Touch-friendly event listeners
+                mobileMenuBtn?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openMobileNav();
+                });
+                
+                mobileMenuBtn?.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    openMobileNav();
+                });
 
-                // Close menu when clicking internal links
+                mobileCloseBtn?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    closeMobileNav();
+                });
+                
+                mobileCloseBtn?.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    closeMobileNav();
+                });
+
+                mobileBackdrop?.addEventListener('click', closeMobileNav);
+                mobileBackdrop?.addEventListener('touchend', closeMobileNav);
+
+                // Enhanced touch feedback for nav links
                 mobileNavLinks.forEach(link => {
-                    link.addEventListener('click', closeMobileNav);
+                    link.addEventListener('click', (e) => {
+                        // Add visual feedback
+                        link.style.backgroundColor = '#f3f4f6';
+                        setTimeout(() => {
+                            link.style.backgroundColor = '';
+                            closeMobileNav();
+                        }, 150);
+                    });
+                    
+                    // Touch feedback
+                    link.addEventListener('touchstart', () => {
+                        link.style.backgroundColor = '#f3f4f6';
+                    });
+                    
+                    link.addEventListener('touchend', () => {
+                        setTimeout(() => {
+                            link.style.backgroundColor = '';
+                        }, 150);
+                    });
+                    
+                    link.addEventListener('touchcancel', () => {
+                        link.style.backgroundColor = '';
+                    });
                 });
 
                 // Close on escape key
                 document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
+                    if (e.key === 'Escape' && !mobileNav?.classList.contains('hidden')) {
                         closeMobileNav();
                     }
                 });
 
                 // Close on window resize to desktop
                 window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 1024 && !mobileNav.classList.contains('hidden')) {
+                    if (window.innerWidth >= 1024 && !mobileNav?.classList.contains('hidden')) {
                         closeMobileNav();
                     }
                 });
+                
+                // Initialize nav panel position
+                if (mobileNavPanel) {
+                    mobileNavPanel.style.transform = 'translateX(0)';
+                }
             }
 
             // Ensure page loads at top
@@ -1251,7 +1524,7 @@
 
                         <!-- Mobile Menu Button -->
                         <div class="lg:hidden flex items-center relative z-10">
-                            <button id="mobile-menu-btn" class="p-2 rounded-lg text-white hover:bg-white/10 transition-colors" aria-label="Open mobile menu">
+                            <button id="mobile-menu-btn" class="mobile-menu-btn mobile-touch-target p-3 rounded-xl text-white hover:bg-white/10 active:bg-white/20 transition-all duration-150" aria-label="Open mobile menu">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
@@ -1289,12 +1562,12 @@
                 <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" id="mobile-backdrop"></div>
                 
                 <!-- Menu Panel -->
-                <div class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl transform translate-x-0">
+                <div class="mobile-nav-panel fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform translate-x-0">
                     <div class="flex flex-col h-full">
                         <!-- Header -->
-                        <div class="flex items-center justify-between p-4 border-b">
+                        <div class="flex items-center justify-between p-6 border-b border-gray-200">
                             <img src="/clarivue-logo-dark.png" alt="Clarivue" class="h-8">
-                            <button id="mobile-close-btn" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                            <button id="mobile-close-btn" class="mobile-touch-target p-3 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Close menu">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
@@ -1302,27 +1575,27 @@
                         </div>
                         
                         <!-- Navigation Links -->
-                        <nav class="flex-1 px-4 py-6 space-y-1">
-                            <a href="/" class="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-50 font-medium">
+                        <nav class="flex-1 px-6 py-8 space-y-2">
+                            <a href="/" class="mobile-nav-link block px-4 py-4 rounded-xl text-gray-900 hover:bg-gray-50 font-medium text-lg transition-colors">
                                 Home
                             </a>
-                            <a href="/about" class="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-50 font-medium">
+                            <a href="/about" class="mobile-nav-link block px-4 py-4 rounded-xl text-gray-900 hover:bg-gray-50 font-medium text-lg transition-colors">
                                 About
                             </a>
-                            <a href="#features" class="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-50 font-medium mobile-nav-link">
+                            <a href="#features" class="mobile-nav-link block px-4 py-4 rounded-xl text-gray-900 hover:bg-gray-50 font-medium text-lg transition-colors">
                                 Features
                             </a>
-                            <a href="#how-it-works" class="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-50 font-medium mobile-nav-link">
+                            <a href="#how-it-works" class="mobile-nav-link block px-4 py-4 rounded-xl text-gray-900 hover:bg-gray-50 font-medium text-lg transition-colors">
                                 How it works
                             </a>
-                            <a href="/faq" class="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-50 font-medium">
+                            <a href="/faq" class="mobile-nav-link block px-4 py-4 rounded-xl text-gray-900 hover:bg-gray-50 font-medium text-lg transition-colors">
                                 FAQ
                             </a>
                         </nav>
                         
                         <!-- CTA Button -->
-                        <div class="p-4 border-t">
-                            <a href="#" data-get-started class="block w-full px-4 py-3 bg-[#FF676D] text-white text-center rounded-lg font-semibold hover:bg-[#FF5A66] transition-colors">
+                        <div class="p-6 border-t border-gray-200">
+                            <a href="#" data-get-started class="mobile-touch-target block w-full px-6 py-4 bg-[#FF676D] text-white text-center rounded-xl font-semibold text-lg hover:bg-[#FF5A66] transition-colors shadow-lg">
                                 Start for free
                             </a>
                         </div>
@@ -2106,15 +2379,62 @@
 
                         <!-- Right column: Content area (60%) -->
                         <div class="md:w-3/5">
-                            <div class="relative h-[400px] bg-gradient-to-br from-white to-gray-50/50 rounded-2xl shadow-lg border border-gray-200 overflow-visible">
+                            <!-- Mobile: Simple card layout -->
+                            <div class="md:hidden space-y-6">
+                                <!-- Plan Card for Mobile -->
+                                <div class="interview-content-mobile bg-white rounded-2xl shadow-lg border border-gray-200 p-6" data-content="plan">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#102C65] text-white">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-[#102C65] font-pj">Plan</h3>
+                                    </div>
+                                    <p class="text-gray-600 text-sm leading-relaxed">Import the job. We build the interview plan and scorecard from the JD. Role maps to competencies - one source of truth.</p>
+                                </div>
+
+                                <!-- Interview Card for Mobile -->
+                                <div class="interview-content-mobile bg-white rounded-2xl shadow-lg border border-gray-200 p-6 hidden" data-content="interview">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#FF676D] text-white">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-[#102C65] font-pj">Interview</h3>
+                                    </div>
+                                    <p class="text-gray-600 text-sm leading-relaxed">Live prompts keep interviewers on track. Notes, time stamps, and follow-ups recorded without lifting a finger.</p>
+                                </div>
+
+                                <!-- Decide Card for Mobile -->
+                                <div class="interview-content-mobile bg-white rounded-2xl shadow-lg border border-gray-200 p-6 hidden" data-content="decide">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#C9A0FF] text-white">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-[#102C65] font-pj">Decide</h3>
+                                    </div>
+                                    <p class="text-gray-600 text-sm leading-relaxed">Scorecards and summaries arrive by email with evidence. Record decision with one click, with no extra logins or tools.</p>
+                                </div>
+                            </div>
+
+                            <!-- Desktop: Complex layout with images -->
+                            <div class="hidden md:block relative h-[400px] bg-gradient-to-br from-white to-gray-50/50 rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
                                 <!-- Content cards with transition classes -->
-                                <div class="interview-content absolute inset-6 w-full h-full transition-all duration-500 ease-in-out opacity-100 transform translate-x-0" data-content="plan">
-                                    <!-- Background Image -->
-                                    <img src="/plan.jpg" alt="Planning process" class="w-full h-full object-cover object-top rounded-xl z-0" loading="lazy" decoding="async">
+                                <div class="interview-content absolute inset-0 w-full h-full transition-all duration-500 ease-in-out opacity-100 transform translate-x-0" data-content="plan">
+                                    <!-- Background Image - Properly centered and responsive -->
+                                    <div class="absolute inset-0 w-full h-full">
+                                        <img src="/plan.jpg" alt="Planning process" class="w-full h-full object-cover object-center rounded-xl" loading="lazy" decoding="async">
+                                        <!-- Overlay for better text contrast -->
+                                        <div class="absolute inset-0 bg-black/20 rounded-xl"></div>
+                                    </div>
                                     
-                                    <!-- UI Card Overlay - Bottom Right (Overflowing) -->
-                                    <div class="absolute bottom-6 -right-16 w-56 z-10">
-                                        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-xl backdrop-blur-sm">
+                                    <!-- UI Card Overlay - Better positioned for desktop -->
+                                    <div class="absolute bottom-4 right-4 w-64 z-10 xl:w-72">
+                                        <div class="rounded-xl border border-gray-200 bg-white/95 backdrop-blur-sm p-4 shadow-xl">
                                         <!-- Header with Generated Badge -->
                                         <div class="flex items-center justify-between mb-3">
                                             <div class="flex items-center gap-1.5">
@@ -2221,13 +2541,17 @@
                                     </div>
                                 </div>
 
-                                <div class="interview-content absolute inset-6 w-full h-full transition-all duration-500 ease-in-out opacity-0 transform translate-x-full" data-content="interview">
-                                    <!-- Background Image -->
-                                    <img src="/interview.jpg" alt="Interview process" class="w-full h-full object-cover object-top rounded-xl z-0" loading="lazy" decoding="async">
+                                <div class="interview-content absolute inset-0 w-full h-full transition-all duration-500 ease-in-out opacity-0 transform translate-x-full" data-content="interview">
+                                    <!-- Background Image - Properly centered and responsive -->
+                                    <div class="absolute inset-0 w-full h-full">
+                                        <img src="/interview.jpg" alt="Interview process" class="w-full h-full object-cover object-center rounded-xl" loading="lazy" decoding="async">
+                                        <!-- Overlay for better text contrast -->
+                                        <div class="absolute inset-0 bg-black/30 rounded-xl"></div>
+                                    </div>
                                     
-                                    <!-- UI Card Overlay - Top with overflow (10% top, 5% left) -->
-                                    <div class="absolute -top-6 -left-3 w-64 z-10">
-                                        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl backdrop-blur-sm">
+                                    <!-- UI Card Overlay - Better positioned -->
+                                    <div class="absolute top-4 left-4 w-64 z-10 xl:w-72">
+                                        <div class="rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-sm p-5 shadow-xl">
                                         <!-- Interview Chat UI Card -->
                                         <div class="flex items-start justify-between mb-3">
                                             <div class="flex items-center gap-2">
@@ -2274,14 +2598,18 @@
                             </div>
                         </div>
 
-                        <!-- Decide Panel - Positioned for Right Column -->
-                        <div class="interview-content absolute top-0 right-0 w-3/5 h-[500px] transition-all duration-500 ease-in-out opacity-0 transform translate-x-full rounded-2xl shadow-lg border border-gray-200 overflow-visible" data-content="decide">
-                            <!-- Background Image -->
-                            <img src="/decide-ops.jpg" alt="Decision process" class="absolute inset-0 w-full h-full object-cover object-center rounded-xl" loading="lazy" decoding="async">
+                        <!-- Decide Panel - Properly positioned -->
+                        <div class="interview-content absolute inset-0 w-full h-full transition-all duration-500 ease-in-out opacity-0 transform translate-x-full rounded-2xl shadow-lg border border-gray-200 overflow-hidden" data-content="decide">
+                            <!-- Background Image - Properly centered and responsive -->
+                            <div class="absolute inset-0 w-full h-full">
+                                <img src="/decide-ops.jpg" alt="Decision process" class="w-full h-full object-cover object-center rounded-xl" loading="lazy" decoding="async">
+                                <!-- Overlay for better text contrast -->
+                                <div class="absolute inset-0 bg-black/25 rounded-xl"></div>
+                            </div>
                             
-                            <!-- Premium Email Debrief Card Overlay -->
-                            <div class="absolute -bottom-12 -left-3 z-10">
-                            <div class="w-72 scale-[0.81] transform transition-all duration-300 hover:scale-[0.83] hover:-translate-y-1">
+                            <!-- Premium Email Debrief Card Overlay - Better positioned -->
+                            <div class="absolute bottom-4 left-4 z-10">
+                            <div class="w-72 transform transition-all duration-300 hover:scale-105 hover:-translate-y-1">
                                 <div class="rounded-xl border border-slate-200/50 bg-white/95 backdrop-blur-sm p-2 shadow-2xl relative overflow-hidden">
                                 <div class="absolute -inset-1 bg-gradient-to-r from-[#44ff9a]/20 via-[#44b0ff]/20 to-[#8b44ff]/20 rounded-xl blur-sm opacity-30 animate-pulse"></div>
                                 
@@ -3141,6 +3469,7 @@
             const desktopSteps = document.querySelectorAll('.interview-step');
             const mobileSteps = document.querySelectorAll('.interview-step-mobile');
             const contents = document.querySelectorAll('.interview-content');
+            const mobileContents = document.querySelectorAll('.interview-content-mobile');
 
 
             // Update active states and content
@@ -3256,6 +3585,17 @@
                         content.style.pointerEvents = 'none';
                         content.style.zIndex = '1';
                         content.style.display = 'none';
+                    }
+                });
+
+                // Update mobile content
+                mobileContents.forEach((content, index) => {
+                    const contentStep = content.getAttribute('data-content');
+                    
+                    if (contentStep === step) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
                     }
                 });
             }
