@@ -104,7 +104,16 @@
 
     <!-- AlpineJS -->
     <script src="https://unpkg.com/alpinejs" defer></script>
-
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            inter: ["Inter"],
+            pj: ["Plus Jakarta Sans"],
+          },
+        },
+      };
+    </script>
     <!-- Custom Fonts -->
     <style type="text/tailwindcss">
       @layer base {
