@@ -1,6 +1,6 @@
 # Clarivue Webpage
 
-This is the official webpage for Clarivue, a structured interview software.
+This is the official webpage for Clarivue, a structured interview software
 
 ## Development
 
