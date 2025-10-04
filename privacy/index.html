@@ -221,6 +221,16 @@
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
     <link rel="dns-prefetch" href="https://unpkg.com" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            inter: ["Inter"],
+            pj: ["Plus Jakarta Sans"],
+          },
+        },
+      };
+    </script>
     <style type="text/tailwindcss">
       @tailwind base;
       @tailwind components;
@@ -309,16 +319,6 @@
         }
       }
     </style>
-    <script>
-      tailwind.config = {
-        theme: {
-          fontFamily: {
-            inter: ["Inter"],
-            pj: ["Plus Jakarta Sans"],
-          },
-        },
-      };
-    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

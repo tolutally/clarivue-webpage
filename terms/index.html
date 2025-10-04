@@ -73,6 +73,7 @@
         
         <!-- Mobile Optimization CSS -->
         <style>
+            
         @media (max-width: 768px) {
             .mobile-legal-heading { font-size: 1.75rem !important; line-height: 1.2 !important; text-align: center; padding: 0 1rem; }
             .mobile-legal-text { font-size: 0.95rem !important; line-height: 1.7 !important; padding: 0 1rem; margin: 1rem 0; }
@@ -86,6 +87,16 @@
         <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
         <link rel="dns-prefetch" href="https://unpkg.com">
         <script src="https://cdn.tailwindcss.com" ></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        inter: ['Inter'],
+                        pj: ['Plus Jakarta Sans'],
+                    },
+                },
+            }
+        </script>
         <style type="text/tailwindcss">
             @tailwind base;
             @tailwind components;
@@ -158,20 +169,12 @@
                 
                 .page-content {
                     opacity: 0;
-                    animation: fade-in-page 0.8s ease-out 0.3s forwards;
+              
                 }
             }
         </style>
-        <script>
-            tailwind.config = {
-                theme: {
-                    fontFamily: {
-                        inter: ['Inter'],
-                        pj: ['Plus Jakarta Sans'],
-                    },
-                },
-            }
-        </script>
+        
+
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->
@@ -605,13 +608,7 @@
             });
             
             // Handle page refresh/reload
-            window.addEventListener('beforeunload', function() {
-                const loader = document.getElementById('page-loader');
-                if (loader) {
-                    loader.style.display = 'flex';
-                    loader.style.opacity = '1';
-                }
-            });
+
 
             // Mobile menu functionality
             const mobileMenuButton = document.getElementById('mobile-menu-button');

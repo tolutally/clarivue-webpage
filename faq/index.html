@@ -48,8 +48,7 @@
       content="Get answers to common questions about Clarivue's structured interview software. Learn about setup, pricing, integrations, and best practices."
     />
 
-    <!-- Comprehensive Favicon Integration -->
-    <!-- Standard favicons -->
+    <!-- Favicons (unchanged) -->
     <link rel="icon" type="image/x-icon" href="/favicon-clarivue/favicon.ico" />
     <link
       rel="icon"
@@ -73,224 +72,70 @@
     <!-- Apple Touch Icons -->
     <link
       rel="apple-touch-icon"
-      sizes="57x57"
-      href="/favicon-clarivue/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="/favicon-clarivue/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="/favicon-clarivue/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="/favicon-clarivue/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="/favicon-clarivue/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="/favicon-clarivue/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="/favicon-clarivue/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="/favicon-clarivue/apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
       sizes="180x180"
       href="/favicon-clarivue/apple-icon-180x180.png"
     />
 
-    <!-- Android Chrome Icons -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="36x36"
-      href="/favicon-clarivue/android-icon-36x36.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="/favicon-clarivue/android-icon-48x48.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="72x72"
-      href="/favicon-clarivue/android-icon-72x72.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="/favicon-clarivue/android-icon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="144x144"
-      href="/favicon-clarivue/android-icon-144x144.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/favicon-clarivue/android-icon-192x192.png"
-    />
-
-    <!-- Microsoft Tiles -->
-    <meta name="msapplication-TileColor" content="#102C65" />
-    <meta
-      name="msapplication-TileImage"
-      content="/favicon-clarivue/ms-icon-144x144.png"
-    />
-    <meta
-      name="msapplication-config"
-      content="/favicon-clarivue/browserconfig.xml"
-    />
-
-    <!-- Web App Manifest -->
+    <!-- Manifest -->
     <link rel="manifest" href="/favicon-clarivue/manifest.json" />
 
     <!-- Theme Colors -->
     <meta name="theme-color" content="#102C65" />
-    <meta name="msapplication-navbutton-color" content="#102C65" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-    <!-- Additional PWA Meta Tags -->
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Clarivue" />
-
-    <!-- Performance Optimization -->
-    <link
-      rel="preload"
-      href="/clarivue-logo-dark.png"
-      as="image"
-      type="image/png"
-    />
+    <!-- Preload and Fonts -->
+    <link rel="preload" href="/clarivue-logo-dark.png" as="image" />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//landingfoliocom.imgix.net" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Critical CSS for above-the-fold content -->
-    <style>
-      .fade-in-fast {
-        animation: fadeInUp 0.6s ease-out forwards;
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    <!-- Tailwind Config -->
+    <script>
+      window.tailwind = {
+        theme: {
+          fontFamily: {
+            pj: ["Plus Jakarta Sans", "sans-serif"],
+            inter: ["Inter", "sans-serif"],
+          },
+        },
+      };
+    </script>
 
-      /* Mobile Optimization for FAQ */
-      @media (max-width: 768px) {
-        .faq-mobile-heading {
-          font-size: 1.75rem !important;
-          line-height: 1.2 !important;
-          text-align: center;
-          padding: 0 1rem;
-        }
-        .faq-mobile-text {
-          font-size: 0.95rem !important;
-          line-height: 1.6 !important;
-          padding: 0 1rem;
-        }
-        .faq-mobile-section {
-          padding: 2rem 1rem !important;
-        }
-        .faq-accordion {
-          margin: 0.75rem 0;
-          border-radius: 12px;
-        }
-        .faq-accordion-button {
-          padding: 1.25rem 1rem;
-          font-size: 1rem;
-          text-align: left;
-        }
-        .faq-accordion-content {
-          padding: 1rem;
-          font-size: 0.95rem;
-          line-height: 1.6;
-        }
-        .mobile-contact-card {
-          margin: 2rem 1rem;
-          padding: 2rem 1.5rem;
-          border-radius: 16px;
-        }
-        * {
-          -webkit-tap-highlight-color: transparent;
-        }
-      }
-    </style>
-
-    <!-- Performance Optimizations -->
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
-    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs" defer></script>
-    <style type="text/tailwindcss">
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
 
+    <!-- AlpineJS -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+
+    <!-- Custom Fonts -->
+    <style type="text/tailwindcss">
       @layer base {
         @font-face {
           font-family: "Plus Jakarta Sans";
           font-weight: 400;
-          font-style: normal;
           src: url("https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Regular.woff2")
             format("woff2");
         }
-
         @font-face {
           font-family: "Plus Jakarta Sans";
           font-weight: 500;
-          font-style: normal;
           src: url("https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Medium.woff2")
             format("woff2");
         }
-
         @font-face {
           font-family: "Plus Jakarta Sans";
           font-weight: 600;
-          font-style: normal;
           src: url("https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-SemiBold.woff2")
             format("woff2");
         }
-
         @font-face {
           font-family: "Plus Jakarta Sans";
           font-weight: 700;
-          font-style: normal;
           src: url("https://cdn.rareblocks.xyz/collection/clarity/fonts/PlusJakartaSans-Bold.woff2")
             format("woff2");
         }
       }
 
+      /* Loading spinner and animations */
       @layer utilities {
-        /* Page Loading Animation */
         @keyframes spin-slow {
           0% {
             transform: rotate(0deg);
@@ -299,7 +144,6 @@
             transform: rotate(360deg);
           }
         }
-
         @keyframes fade-in-page {
           0% {
             opacity: 0;
@@ -308,7 +152,6 @@
             opacity: 1;
           }
         }
-
         .page-loading {
           position: fixed;
           top: 0;
@@ -322,7 +165,6 @@
           z-index: 9999;
           transition: opacity 0.5s ease-out;
         }
-
         .loading-spinner {
           width: 60px;
           height: 60px;
@@ -331,23 +173,12 @@
           border-radius: 50%;
           animation: spin-slow 1s linear infinite;
         }
-
         .page-content {
           opacity: 0;
           animation: fade-in-page 0.8s ease-out 0.3s forwards;
         }
       }
     </style>
-    <script>
-      tailwind.config = {
-        theme: {
-          fontFamily: {
-            inter: ["Inter"],
-            pj: ["Plus Jakarta Sans"],
-          },
-        },
-      };
-    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

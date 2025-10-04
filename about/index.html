@@ -261,6 +261,16 @@
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      body {
+        visibility: hidden;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", () => {
+        document.body.style.visibility = "visible";
+      });
+    </script>
+    <style>
       :root {
         --cv-bg: #102c65;
         --cv-ink: #ffffff;
